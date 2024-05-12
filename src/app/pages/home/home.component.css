@@ -1,0 +1,59 @@
+/* 調整不同斷點下的寬度 */
+@media (min-width: 960px) { /* 符合 gt-sm 斷點*/
+  .fixed {
+    width: 80%;
+  }
+
+  .banner img {
+    max-height: 300px; /* 在較小的裝置上減少高度 */
+  }
+}
+
+@media (max-width: 600px) {
+  .banner img {
+    max-height: 200px; /* 在手機等小型裝置上進一步減少高度 */
+  }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 50%;  /* 將元素的左邊界定位到視窗的中央 */
+  transform: translateX(-50%);  /* 使用 transform 將元素水平居中 */
+  z-index: 1;
+  background-color: #00A4A6;
+}
+
+.nofixed {
+  position: static;
+  background-color: #00A4A6;
+}
+
+.navigation mat-icon {
+  margin-bottom: 15px;  /* 增加底部邊距以讓圖標與搜索欄的底部對齊，這是因為搜索欄的 material 造成其下方有額外的空間 */
+  font-size: 50px;  /* 圖的大小 */
+  height: 50px ;  /* 圖的邊框大小 */
+  width: 50px;  /* 圖的邊框大小 */
+}
+
+.banner img {
+  width: 100%; /* 使圖片寬度始終填滿容器寬度 */
+  max-height: 400px; /* 設定一個最大高度以避免圖片過高 */
+  object-fit: cover; /* 保持圖片的比例，同時填滿元素的整個內容框 */
+}
+
+.product-list p {
+  color: #00A4A6;
+}
+
+.product-item {
+  margin-bottom: 10px;  /* 每個 row 之間都會有 10px 的間隔 */
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.product-item:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  border-color: #00A4A6;
+}

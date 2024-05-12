@@ -1,0 +1,19 @@
+.cart-container {
+  width: 100%;
+  background: #f0f0f0;
+}
+
+.product-image {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+mat-checkbox {
+  margin-right: 10px;
+}
+
+.cart-total {
+  margin-top: 20px;
+  text-align: right;
+}

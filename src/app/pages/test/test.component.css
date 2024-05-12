@@ -1,0 +1,10 @@
+.mat-card-custom {
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;  /* Makes the cursor a pointing hand when hovering over the card */
+}
+
+.mat-card-custom:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  border-color: #00A4A6;
+}

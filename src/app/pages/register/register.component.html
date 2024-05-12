@@ -1,0 +1,37 @@
+<div class="registration-container">
+  <mat-horizontal-stepper linear #stepper="matHorizontalStepper">
+    <!-- 步驟1: 基本資料 -->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>基本資料</ng-template>
+        <mat-form-field>
+          <mat-label>電子郵件</mat-label>
+          <input matInput placeholder="輸入您的電子郵件" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>密碼</mat-label>
+          <input matInput placeholder="輸入您的密碼" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>確認密碼</mat-label>
+          <input matInput placeholder="再次輸入您的密碼" [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword" required>
+        </mat-form-field>
+        <button mat-button matStepperNext>下一步</button>
+      </form>
+    </mat-step>
+
+    <!-- 步驟2: Email驗證 -->
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Email驗證</ng-template>
+        <mat-form-field>
+          <mat-label>驗證碼</mat-label>
+          <input matInput placeholder="輸入驗證碼" formControlName="verificationCode" required maxlength="4">
+        </mat-form-field>
+        <button mat-button (click)="resendCode()">重寄驗證碼</button>
+        <button mat-button matStepperPrevious>上一步</button>
+        <button mat-button (click)="submitAll()">完成註冊</button>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

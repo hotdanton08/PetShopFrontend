@@ -1,0 +1,31 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>登入</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="login()" #loginForm="ngForm" fxLayout="column" fxLayoutGap="20px">
+        <mat-form-field appearance="fill">
+          <mat-label>電子郵件</mat-label>
+          <input matInput placeholder="輸入您的電子郵件" type="email" [(ngModel)]="email" name="email" required email #emailInput="ngModel">
+          <mat-error *ngIf="emailInput.errors?.['required'] && emailInput.touched">請輸入 Email</mat-error>
+          <mat-error *ngIf="emailInput.errors?.['email'] && emailInput.touched">Email格式錯誤</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>密碼</mat-label>
+          <input matInput placeholder="輸入您的密碼" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" #passwordInput="ngModel">
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="passwordInput.errors?.['required'] && passwordInput.touched">請輸入密碼</mat-error>
+          <mat-error *ngIf="passwordInput.errors?.['pattern'] && passwordInput.touched">密碼需包含英文大小寫和數字</mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="login-button" color="primary" type="submit" [disabled]="!loginForm.valid">登入</button>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+          <button mat-button class="forgot-password" (click)="openForgotPasswordDialog()">忘記密碼</button>
+          <button mat-button class="register-button" (click)="navigateToRegister()">註冊</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
