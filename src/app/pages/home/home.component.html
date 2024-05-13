@@ -49,7 +49,7 @@
     </div>
 
     <!-- Product List -->
-    <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="10px" class="product-list">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="product-list">
       <mat-card appMaterialElevation fxFlex="19" *ngFor="let product of products" class="product-item" (click)="goToProductDetail(product)">
         <mat-card-header>
           <img fxFlex="100" mat-card-image [src]="product.image" alt="{{ product.name }}">
