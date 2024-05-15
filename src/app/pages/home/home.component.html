@@ -30,13 +30,10 @@
       <c-carousel>
         <c-carousel-indicators></c-carousel-indicators>
         <c-carousel-inner>
-          <c-carousel-item *ngFor="let slide of slides">
-            <img
-              alt="{{slide.title}}"
-              class="d-block w-100"
-              loading="lazy"
-              src="{{slide.src}}"
-            />
+          <c-carousel-item *ngFor="let slide of slides; let i = index" class="image-container">
+            <mat-progress-spinner *ngIf="!bannerImageLoaded[i]" mode="indeterminate"></mat-progress-spinner>
+            <img src="{{slide.src}}" alt="{{slide.title}}" class="d-block w-100" loading="lazy"
+              (load)="onBannerImageLoad(i)" [hidden]="!bannerImageLoaded[i]"/>
             <c-carousel-caption class="d-none d-md-block">
               <h3>{{slide.title}}</h3>
               <p>{{slide.subtitle}}</p>
@@ -50,8 +47,9 @@
 
     <!-- Product List -->
     <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="product-list">
-      <mat-card appMaterialElevation fxFlex="19" *ngFor="let product of products" class="product-item" (click)="goToProductDetail(product)">
+      <mat-card appMaterialElevation fxFlex="19" *ngFor="let product of products; let i = index" class="product-item" (click)="goToProductDetail(product)">
         <mat-card-header>
+          <mat-progress-spinner *ngIf="!productImageLoaded[i]" mode="indeterminate"></mat-progress-spinner>
           <img fxFlex="100" mat-card-image [src]="product.image" alt="{{ product.name }}">
         </mat-card-header>
         <mat-card-content>

@@ -14,7 +14,13 @@ interface Product {
 })
 
 export class HomeComponent implements OnInit {
-  slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
+  slides: any[] = [
+    { id: 0, src: 'https://picsum.photos/1500/400?random=1', title: 'First slide', subtitle: 'Description 1' },
+    { id: 1, src: 'https://picsum.photos/1500/400?random=2', title: 'Second slide', subtitle: 'Description 2' },
+    { id: 2, src: 'https://picsum.photos/1500/400?random=3', title: 'Third slide', subtitle: 'Description 3' }
+  ];
+  bannerImageLoaded: boolean[] = new Array(this.slides.length).fill(false);  // 追踪圖片是否加載的陣列
+  productImageLoaded!: boolean[];
 
   selectedLanguage = 'zh-TW';
   products: Product[] = [];
@@ -26,25 +32,23 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.slides[0] = {
-      id: 0,
-      src: 'https://picsum.photos/1500/400?random=1',
-      title: 'First slide',
-      subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-    };
-    this.slides[1] = {
-      id: 1,
-      src: 'https://picsum.photos/1500/400?random=2',
-      title: 'Second slide',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    };
-    this.slides[2] = {
-      id: 2,
-      src: 'https://picsum.photos/1500/400?random=3',
-      title: 'Third slide',
-      subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-    };
+    this.preloadImages();
     this.loadProducts();
+  }
+
+  preloadImages() {
+    for (const slide of this.slides) {
+      const img = new Image();
+      img.src = slide.src;
+    }
+  }
+
+  onBannerImageLoad(index: number) {
+    this.bannerImageLoaded[index] = true;
+  }
+
+  onProductImageLoad(index: number) {
+    this.productImageLoaded[index] = true;
   }
 
   ngOnDestroy() {
@@ -74,8 +78,37 @@ export class HomeComponent implements OnInit {
       { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=7' },
       { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=8' },
       { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=9' },
-      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=10' }
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=10' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=11' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=12' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=1' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=2' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=3' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=4' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=5' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=6' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=7' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=8' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=9' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=10' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=11' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=12' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=1' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=2' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=3' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=4' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=5' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=6' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=7' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=8' },
+      { name: '產品', price: 100, image: 'https://picsum.photos/150/150?random=9' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=10' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=11' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=12' },
+      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=13' }
     ]
+
+    this.productImageLoaded = new Array(this.products.length).fill(false);
   }
 
   changeLanguage() {
