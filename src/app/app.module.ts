@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -18,6 +19,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { TestComponent } from './pages/test/test.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     FlexLayoutModule,
     RouterLink,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LazyLoadImageModule
   ],
   providers: [
     provideAnimationsAsync()
