@@ -65,12 +65,9 @@ mat-progress-spinner {
   transform: translate(-50%, -50%);
 }
 
-.product-list p {
-  color: #00A4A6;
-}
-
 .product-item {
-  margin-bottom: 10px;  /* 每個 row 之間都會有 10px 的間隔 */
+  width: 100%;
+  margin: 10px;
   transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
   border: 1px solid transparent;
   cursor: pointer;
@@ -79,4 +76,12 @@ mat-progress-spinner {
 .product-item:hover {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   border-color: #00A4A6;
+}
+
+.product-item img {
+  max-height: 180px;
+}
+
+.product-item p {
+  color: #00A4A6;
 }
