@@ -1,9 +1,5 @@
 /* 調整不同斷點下的寬度 */
 @media (min-width: 960px) { /* 符合 gt-sm 斷點*/
-  .fixed {
-    width: 80%;
-  }
-
   .banner img {
     max-height: 300px; /* 在較小的裝置上減少高度 */
   }
@@ -17,6 +13,7 @@
 
 .fixed {
   position: fixed;
+  width: 100%;
   top: 0;
   left: 50%;  /* 將元素的左邊界定位到視窗的中央 */
   transform: translateX(-50%);  /* 使用 transform 將元素水平居中 */

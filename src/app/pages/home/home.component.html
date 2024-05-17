@@ -1,29 +1,30 @@
+<div (scroll)="onscroll()" [ngClass]="topBarFixed?'fixed':'nofixed'">
+  <!-- Top Bar -->
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button mat-button href="/help">幫助中心</button>
+    <mat-form-field fxFlex="10">
+      <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
+        <mat-option value="zh-TW">繁體中文</mat-option>
+        <mat-option value="en">English</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <a mat-button href="/register">註冊</a>
+    <a mat-button href="/login">登入</a>
+  </div>
+
+  <!-- Navigation -->
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
+    <mat-icon>home</mat-icon>
+    <h1 fxFlex="10"><strong >毛毛購物</strong></h1>
+    <mat-form-field appearance="fill" fxFlex>
+      <input matInput placeholder="搜尋..." [(ngModel)]="searchQuery">
+    </mat-form-field>
+    <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
+  </div>
+</div>
+
 <div fxLayout="row" fxLayoutAlign="center">
   <div class="main-container" fxLayout="column" fxFlex="100" fxFlex.gt-sm="80">
-    <div (scroll)="onscroll()" [ngClass]="topBarFixed?'fixed':'nofixed'">
-      <!-- Top Bar -->
-      <div fxLayout="row" fxLayoutAlign="end center">
-        <button mat-button href="/help">幫助中心</button>
-        <mat-form-field fxFlex="10">
-          <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
-            <mat-option value="zh-TW">繁體中文</mat-option>
-            <mat-option value="en">English</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <a mat-button href="/register">註冊</a>
-        <a mat-button href="/login">登入</a>
-      </div>
-
-      <!-- Navigation -->
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
-        <mat-icon>home</mat-icon>
-        <h1 fxFlex="10"><strong >毛毛購物</strong></h1>
-        <mat-form-field appearance="fill" fxFlex>
-          <input matInput placeholder="搜尋..." [(ngModel)]="searchQuery">
-        </mat-form-field>
-        <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
-      </div>
-    </div>
 
     <!-- Banner -->
     <div class="banner">
