@@ -15,6 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [],
@@ -34,7 +35,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCheckboxModule,
     MatSelectModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatGridListModule,
   ],
   exports: [
     CommonModule,
@@ -52,7 +54,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCheckboxModule,
     MatSelectModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatGridListModule
   ]
 })
 export class MaterialModule {}
