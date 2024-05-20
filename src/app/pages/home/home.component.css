@@ -1,3 +1,7 @@
+.main-container {
+  background-color: #F5F5F5;
+}
+
 /* 調整不同斷點下的寬度 */
 @media (min-width: 960px) { /* 符合 gt-sm 斷點*/
   .banner img {
@@ -62,22 +66,25 @@ mat-progress-spinner {
   transform: translate(-50%, -50%);
 }
 
+.mat-grid-tile {
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+.mat-grid-tile:hover {
+  box-shadow: 0 10px 6px rgba(0,0,0,0.2);
+}
+
 .product-item {
   width: 100%;
-  margin: 10px;
-  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+  height: 100%;
   border: 1px solid transparent;
   cursor: pointer;
 }
 
 .product-item:hover {
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   border-color: #00A4A6;
 }
 
-.product-item img {
-  max-height: 180px;
-}
 
 .product-item p {
   color: #00A4A6;

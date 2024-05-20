@@ -23,8 +23,8 @@
   </div>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="center">
-  <div class="main-container" fxLayout="column" fxFlex="100" fxFlex.gt-sm="80">
+<div class="main-container" fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="80">
 
     <!-- Banner -->
     <div class="banner">
@@ -47,12 +47,13 @@
     </div>
 
     <!-- Product List -->
-    <mat-grid-list cols="5" rowHeight="300px">
+    <mat-grid-list cols="5" rowHeight="1:1.5" gutterSize="10px">
       <mat-grid-tile *ngFor="let product of products; let i = index">
         <mat-card appMaterialElevation class="product-item" (click)="goToProductDetail(product)">
           <mat-card-header>
             <mat-progress-spinner *ngIf="!productImageLoaded[i]" mode="indeterminate"></mat-progress-spinner>
-            <img fxFlex="100" mat-card-image [lazyLoad]="product.image" alt="{{ product.name }}">
+            <img fxFlex="100" mat-card-image [lazyLoad]="product.image" alt="{{ product.name }}"
+            (load)="onProductImageLoad(i)">
           </mat-card-header>
           <mat-card-content>
             <h3>{{ product.name }}</h3>
