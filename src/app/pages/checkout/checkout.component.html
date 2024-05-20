@@ -9,12 +9,12 @@
 
   <!-- Checkout Table -->
   <div>
-    <table mat-table [dataSource]="selectedItems" class="mat-elevation-z8">
+    <table mat-table [dataSource]="productItems" class="mat-elevation-z8">
       <!-- Product Image and Name Column -->
       <ng-container matColumnDef="product">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>商品</th>
         <td mat-cell *matCellDef="let element">
-          <img [src]="element.images[0]" alt="Product" class="product-image">
+          <img [src]="element.image" alt="Product" class="product-image">
           <span>{{ element.name }}</span>
         </td>
       </ng-container>
@@ -33,8 +33,8 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>總計</th>
         <td mat-cell *matCellDef="let element"> {{ element.price * element.quantity | number:'1.0-0' }} </td>
       </ng-container>
-      <tr mat-header-row ></tr>
-      <tr mat-row></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
 
@@ -48,7 +48,7 @@
       <mat-radio-button value="cash">貨到付款</mat-radio-button>
       <mat-radio-button value="creditCard">信用卡</mat-radio-button>
     </mat-radio-group>
-    <!-- <button mat-button (click)="openCreditCardDialog()" *ngIf="paymentMethod === 'creditCard'">填寫信用卡資訊</button> -->
+    <button mat-button (click)="openCreditCardDialog()" *ngIf="paymentMethod === 'creditCard'">填寫信用卡資訊</button>
     <div class="checkout-total">
       總金額: {{ calculateTotal() }}
       <button mat-button (click)="confirmPayment()">確認付款</button>
