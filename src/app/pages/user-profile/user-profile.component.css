@@ -1,0 +1,14 @@
+
+.user-profile-container {
+  margin-top: 20px;
+}
+
+.user-profile-card {
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+mat-form-field {
+  width: 100%;
+}

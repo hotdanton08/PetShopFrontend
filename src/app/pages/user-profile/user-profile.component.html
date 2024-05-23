@@ -1,0 +1,31 @@
+
+<div class="user-profile-container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="user-profile-card">
+    <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>密碼</mat-label>
+        <input matInput type="password" formControlName="password" required>
+        <mat-error *ngIf="userProfileForm.get('password')?.hasError('required')">
+          請輸入密碼
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>確認密碼</mat-label>
+        <input matInput type="password" formControlName="confirmPassword" required>
+        <mat-error *ngIf="!passwordsMatch">
+          密碼不匹配
+        </mat-error>
+        <mat-error *ngIf="userProfileForm.get('confirmPassword')?.hasError('required')">
+          請輸入確認密碼
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!userProfileForm.valid || !passwordsMatch">
+        儲存
+      </button>
+    </form>
+  </mat-card>
+</div>

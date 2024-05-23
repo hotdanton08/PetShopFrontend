@@ -8,6 +8,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { TestComponent } from './pages/test/test.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { FaqComponent } from './pages/faq/faq.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'user-profile', component: UserProfileComponent },
   { path: 'test', component: TestComponent }
 ];
 

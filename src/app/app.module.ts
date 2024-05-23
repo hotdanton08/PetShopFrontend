@@ -21,6 +21,7 @@ import { TestComponent } from './pages/test/test.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { FaqComponent } from './pages/faq/faq.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FaqComponent } from './pages/faq/faq.component';
     CheckoutComponent,
     ProductDetailComponent,
     FaqComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
