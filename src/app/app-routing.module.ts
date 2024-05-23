@@ -7,6 +7,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { TestComponent } from './pages/test/test.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'faq', component: FaqComponent },
   { path: 'test', component: TestComponent }
 ];
 

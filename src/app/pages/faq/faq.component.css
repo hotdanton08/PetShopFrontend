@@ -1,0 +1,12 @@
+.faq-header {
+  background-color: #00A4A6;
+}
+
+.faq-container {
+  margin: 30px;
+}
+
+.faq-accordion .mat-expansion-panel-header {
+  justify-content: space-between;
+  align-items: center;
+}
