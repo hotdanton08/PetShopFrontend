@@ -43,11 +43,10 @@ body {
 .images-Info-container {
   margin: 15px;
   padding: 30px;
-  width: 80%;
 }
 
 .product-description {
-  width: 80%;
+  margin: 15px;
 }
 
 .sold-count {

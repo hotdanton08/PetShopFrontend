@@ -21,48 +21,51 @@
   <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
 </div>
 
-<div class="main-container" fxLayout="column" fxLayoutAlign="center center">
-  <mat-card fxLayout="row" fxLayoutAlign="end start" class="images-Info-container" fxLayoutGap="50px">
-    <!-- Left: Product Images -->
-    <div fxFlex="50">
-      <img [src]="selectedImage" alt="Product Image" class="main-image">
-      <div fxLayout="row" class="thumbnails">
-        <img fxFlex="20" *ngFor="let img of images; let i = index" [src]="img"
-              [class.selected]="selectedImage === img"
-              (click)="selectImage(img)" class="thumb-image">
-      </div>
-    </div>
-
-    <!-- Right: Product Info -->
-    <div>
-      <h1>【MLM】華夫格 短袖t恤 男 夏季 韓版 潮流 休閑 簡約百搭 寬松 ins情侶 五分袖 半袖 短袖T恤青少年短袖上衣</h1>
-      <h3 class="sold-count">{{ soldCount }} 已售出</h3>
-      <div class="price-container">
-        <h3 class="price">$ {{ price }}</h3>
-      </div>
-      <div fxLayout="row">
-        <div *ngFor="let option of productOptions" class="option-button">
-          <button mat-raised-button
-            [ngStyle]="{'background-color': selectedOption === option ? '#00A4A6' : ''}"
-            (click)="selectOption(option)">
-            {{ option.name }}
-          </button>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="main-container" fxLayout="column"  fxFlex="80">
+    <mat-card fxLayout="row" fxLayoutAlign="end start" class="images-Info-container" fxLayoutGap="50px">
+      <!-- Left: Product Images -->
+      <div fxFlex="50">
+        <img [src]="selectedImage" alt="Product Image" class="main-image">
+        <div fxLayout="row" class="thumbnails">
+          <img fxFlex="20" *ngFor="let img of images; let i = index" [src]="img"
+                [class.selected]="selectedImage === img"
+                (click)="selectImage(img)" class="thumb-image">
         </div>
       </div>
-      <div class="quantity-container" fxLayoutAlign="center center">
-        <button mat-mini-fab class="quantity-button" (click)="decreaseQuantity()">-</button>
-        <span>{{ quantity }}</span>
-        <button mat-mini-fab class="quantity-button" (click)="increaseQuantity()">+</button>
-      </div>
-      <button mat-button class="add-to-cart">加入購物車</button>
-    </div>
-  </mat-card>
 
-  <!-- Below: Product description -->
-  <div fxLayout="column" class="product-description">
-    <mat-card style="padding: 30px;">
-      <h2>商品描述:</h2>
-      <p>{{ description }}</p>
+      <!-- Right: Product Info -->
+      <div>
+        <h1>【MLM】華夫格 短袖t恤 男 夏季 韓版 潮流 休閑 簡約百搭 寬松 ins情侶 五分袖 半袖 短袖T恤青少年短袖上衣</h1>
+        <h3 class="sold-count">{{ soldCount }} 已售出</h3>
+        <div class="price-container">
+          <h3 class="price">$ {{ price }}</h3>
+        </div>
+        <div fxLayout="row">
+          <div *ngFor="let option of productOptions" class="option-button">
+            <button mat-raised-button
+              [ngStyle]="{'background-color': selectedOption === option ? '#00A4A6' : ''}"
+              (click)="selectOption(option)">
+              {{ option.name }}
+            </button>
+          </div>
+        </div>
+        <div class="quantity-container" fxLayoutAlign="center center">
+          <button mat-mini-fab class="quantity-button" (click)="decreaseQuantity()">-</button>
+          <span>{{ quantity }}</span>
+          <button mat-mini-fab class="quantity-button" (click)="increaseQuantity()">+</button>
+        </div>
+        <button mat-button class="add-to-cart">加入購物車</button>
+      </div>
     </mat-card>
+
+    <!-- Below: Product description -->
+    <div fxLayout="column" class="product-description">
+      <mat-card style="padding: 30px;">
+        <h2>商品描述:</h2>
+        <p>{{ description }}</p>
+      </mat-card>
+    </div>
   </div>
 </div>
+
