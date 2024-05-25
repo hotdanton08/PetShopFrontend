@@ -1,17 +1,28 @@
 
-<div fxLayout="column" fxLayoutAlign="center stretch">
-  <!-- Faq Header -->
-  <div fxLayout="row" fxLayoutAlign="start center" class="faq-header">
-    <mat-icon >home</mat-icon>
-    <h1><strong>毛毛購物</strong></h1>
-    <h1><strong>|</strong></h1>
-    <h1><strong>幫助中心</strong></h1>
-  </div>
+<!-- Faq Header -->
+<div fxLayout="row" fxLayoutAlign="start center" class="faq-header">
+  <mat-icon>home</mat-icon>
+  <h1><strong>毛毛購物</strong></h1>
+  <h1><strong>|</strong></h1>
+  <h1><strong>幫助中心</strong></h1>
+</div>
 
-  <div class="faq-container" >
-    <h2>問題 Q&A</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="faq-container" fxFlex="80">
+    <mat-tab-group animationDuration="0ms" (selectedIndexChange)="selectTab($event)">
+      <mat-tab label="全部問題"></mat-tab>
+      <mat-tab label="新手上路"></mat-tab>
+      <mat-tab label="訂單與物流"></mat-tab>
+      <mat-tab label="退貨與退款"></mat-tab>
+      <mat-tab label="購物安全與其他"></mat-tab>
+      <mat-tab label="付款或帳務問題"></mat-tab>
+      <mat-tab label="優惠與促銷活動"></mat-tab>
+      <mat-tab label="電子票券與繳費"></mat-tab>
+    </mat-tab-group>
+
+    <h2 style="margin-top: 20px;">{{ currentCategory }}</h2>
     <mat-accordion class="faq-accordion" multi="true">
-      <mat-expansion-panel *ngFor="let faq of faqs">
+      <mat-expansion-panel *ngFor="let faq of filteredFaqs">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{ faq.question }}
