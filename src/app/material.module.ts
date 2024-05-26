@@ -16,6 +16,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -55,7 +57,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSelectModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSidenavModule,
+    MatListModule,
+
   ]
 })
 export class MaterialModule {}

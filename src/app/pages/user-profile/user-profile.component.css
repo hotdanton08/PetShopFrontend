@@ -1,14 +1,25 @@
+.user-profile-header {
+  color: white;
+  background-color: #00A4A6;
+}
+
+.user-profile-header mat-icon {
+  margin-bottom: 8px;
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
 
 .user-profile-container {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .user-profile-card {
   padding: 20px;
-  width: 100%;
-  max-width: 400px;
+  width: 80%;
 }
 
 mat-form-field {
   width: 100%;
 }
+
