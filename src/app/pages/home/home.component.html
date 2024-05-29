@@ -1,6 +1,6 @@
 <div (scroll)="onscroll()" [ngClass]="topBarFixed?'fixed':'nofixed'">
   <!-- Top Bar -->
-  <div fxLayout="row" fxLayoutAlign="end center">
+  <div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
     <button mat-button href="/help">幫助中心</button>
     <mat-form-field fxFlex="10">
       <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
@@ -8,8 +8,8 @@
         <mat-option value="en">English</mat-option>
       </mat-select>
     </mat-form-field>
-    <a mat-button href="/register">註冊</a>
-    <a mat-button href="/login">登入</a>
+    <button mat-button href="/register">註冊</button>
+    <button mat-button href="/login">登入</button>
   </div>
 
   <!-- Navigation -->

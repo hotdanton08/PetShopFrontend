@@ -59,8 +59,10 @@ export class ProductDetailComponent implements OnInit {
     console.log('Selected option:', this.selectedOption);
   }
 
-  changeLanguage() {
+  changeLanguage(lang: string) {
+    this.selectedLanguage = lang;
     console.log('語言已切換:', this.selectedLanguage);
+    // 這裡可以添加更多的邏輯來處理語言切換的後續操作
   }
 
   goToCart() {

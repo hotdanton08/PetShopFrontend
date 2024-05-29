@@ -15,6 +15,10 @@
   }
 }
 
+.top-bar button {
+  color: white;
+}
+
 .fixed {
   position: fixed;
   width: 100%;
@@ -85,7 +89,13 @@ mat-progress-spinner {
   border-color: #00A4A6;
 }
 
-
 .product-item p {
   color: #00A4A6;
+}
+
+.product-item h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

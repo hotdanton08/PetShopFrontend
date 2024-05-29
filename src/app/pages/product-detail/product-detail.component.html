@@ -1,14 +1,16 @@
 <!-- Top Bar -->
 <div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
   <button mat-button href="/help">幫助中心</button>
-  <mat-form-field fxFlex="10">
-    <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
-      <mat-option value="zh-TW">繁體中文</mat-option>
-      <mat-option value="en">English</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <a mat-button href="/register">註冊</a>
-  <a mat-button href="/login">登入</a>
+  <button mat-button [matMenuTriggerFor]="languageMenu">
+    Language
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
+    <button mat-menu-item (click)="changeLanguage('en')">English</button>
+  </mat-menu>
+  <button mat-button href="/register">註冊</button>
+  <button mat-button href="/login">登入</button>
 </div>
 
 <!-- Navigation -->
@@ -44,7 +46,10 @@
         <div fxLayout="row">
           <div *ngFor="let option of productOptions" class="option-button">
             <button mat-raised-button
-              [ngStyle]="{'background-color': selectedOption === option ? '#00A4A6' : ''}"
+              [ngStyle]="{
+                'background-color': selectedOption === option ? '#00A4A6' : '',
+                'color': selectedOption === option ? 'white' : ''
+              }"
               (click)="selectOption(option)">
               {{ option.name }}
             </button>

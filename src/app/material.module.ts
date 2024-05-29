@@ -18,6 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -39,6 +40,7 @@ import { MatListModule } from '@angular/material/list';
     MatRadioModule,
     MatProgressSpinnerModule,
     MatGridListModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -60,7 +62,7 @@ import { MatListModule } from '@angular/material/list';
     MatGridListModule,
     MatSidenavModule,
     MatListModule,
-
+    MatMenuModule
   ]
 })
 export class MaterialModule {}

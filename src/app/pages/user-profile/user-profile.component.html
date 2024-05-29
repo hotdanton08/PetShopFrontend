@@ -39,19 +39,20 @@
               <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-radio-button>
             </mat-radio-group>
             <div fxLayout="row" fxLayoutGap="10px">
-              <mat-form-field appearance="fill" fxFlex="30">
+              <mat-label fxFlex="10">生日apple banana</mat-label>
+              <mat-form-field appearance="fill" >
                 <mat-label>出生日</mat-label>
                 <mat-select formControlName="day">
                   <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field appearance="fill" fxFlex="30">
+              <mat-form-field appearance="fill" >
                 <mat-label>出生月</mat-label>
                 <mat-select formControlName="month">
                   <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field appearance="fill" fxFlex="40">
+              <mat-form-field appearance="fill">
                 <mat-label>出生年</mat-label>
                 <mat-select formControlName="year">
                   <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
