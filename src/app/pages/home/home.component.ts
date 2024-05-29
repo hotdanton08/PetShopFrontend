@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   ];
   bannerImageLoaded: boolean[] = new Array(this.slides.length).fill(false);  // 追踪圖片是否加載的陣列
   productImageLoaded!: boolean[];
+  errorImage: string = 'https://fakeimg.pl/1500x400/'
 
   selectedLanguage = 'zh-TW';
   products: Product[] = [];

@@ -33,7 +33,7 @@
         <c-carousel-inner>
           <c-carousel-item *ngFor="let slide of slides; let i = index" class="image-container">
             <mat-progress-spinner *ngIf="!bannerImageLoaded[i]" mode="indeterminate"></mat-progress-spinner>
-            <img [lazyLoad]="slide.src" alt="{{slide.title}}" class="d-block w-100"
+            <img [lazyLoad]="slide.src" [errorImage]="errorImage" class="d-block w-100"
               (load)="onBannerImageLoad(i)" [hidden]="!bannerImageLoaded[i]"/>
             <c-carousel-caption class="d-none d-md-block">
               <h3>{{slide.title}}</h3>
