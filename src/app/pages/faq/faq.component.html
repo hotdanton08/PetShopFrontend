@@ -1,26 +1,9 @@
 
 <!-- Top Bar -->
-<div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
-  <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
-  <button mat-button [matMenuTriggerFor]="languageMenu">
-    {{ 'LANGUAGE' | translate }}
-    <mat-icon>arrow_drop_down</mat-icon>
-  </button>
-  <mat-menu #languageMenu="matMenu">
-    <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
-    <button mat-menu-item (click)="changeLanguage('en')">English</button>
-  </mat-menu>
-  <button mat-button href="/register">{{ 'REGISTER' | translate }}</button>
-  <button mat-button href="/login">{{ 'LOGIN' | translate }}</button>
-</div>
+<app-top-bar></app-top-bar>
 
 <!-- Faq Header -->
-<div fxLayout="row" fxLayoutAlign="start center" class="faq-header">
-  <mat-icon>home</mat-icon>
-  <h1><strong>{{ 'WEBSITE_NAME' | translate }}</strong></h1>
-  <h1><strong>|</strong></h1>
-  <h1><strong>{{ 'HELP_CENTER' | translate }}</strong></h1>
-</div>
+<app-header [headerName]="'HELP_CENTER'"></app-header>
 
 <div fxLayout="row" fxLayoutAlign="center center">
   <div class="faq-container" fxFlex="80">

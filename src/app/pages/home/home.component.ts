@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 
 interface Product {
   name: string;
@@ -26,15 +25,11 @@ export class HomeComponent implements OnInit {
 
   selectedLanguage = 'zh-TW';
   products: Product[] = [];
-  searchQuery: string = '';
   topBarFixed:boolean = false;
   currentBannrIndex = 0;
   intervalBannerId: any;
 
-  constructor(private router: Router, private translate: TranslateService) {
-    // 設置默認語言
-    this.translate.setDefaultLang('zh-TW');
-    this.translate.use(this.selectedLanguage);
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
@@ -93,17 +88,8 @@ export class HomeComponent implements OnInit {
     this.productImageLoaded = new Array(this.products.length).fill(false);
   }
 
-  changeLanguage(lang: string) {
-    this.selectedLanguage = lang;
-    this.translate.use(lang);
-  }
-
   goToProductDetail(product: any) {
     // 假設產品詳情路由設置為 '/products/:id'
     this.router.navigate(['/products', product.id]);
-  }
-
-  goToCart() {
-    this.router.navigate(['/cart']);
   }
 }

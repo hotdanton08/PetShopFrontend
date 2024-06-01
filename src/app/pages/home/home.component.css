@@ -2,32 +2,6 @@
   background-color: #F5F5F5;
 }
 
-.top-bar {
-  background-color: #00A4A6;
-  padding: 5px 0;
-}
-
-.top-bar button {
-  color: white;
-}
-
-.navigation {
-  color: white;
-  background-color: #00A4A6;
-  padding: 10px 0;
-}
-
-.navigation mat-icon {
-  margin-bottom: 8px;
-  font-size: 50px;
-  height: 50px;
-  width: 50px;
-}
-
-.navigation mat-form-field {
-  padding-top: 10px;
-}
-
 /* 調整不同斷點下的寬度 */
 @media (min-width: 960px) { /* 符合 gt-sm 斷點*/
   .banner img {

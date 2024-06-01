@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
+  <mat-icon>home</mat-icon>
+  <h1 fxFlex="10"><strong>{{ 'WEBSITE_NAME' | translate}}</strong></h1>
+  <mat-form-field appearance="fill" fxFlex>
+    <input matInput placeholder="{{ 'SEARCH' | translate }}" [(ngModel)]="searchQuery">
+  </mat-form-field>
+  <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
+</div>

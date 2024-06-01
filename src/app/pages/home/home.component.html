@@ -1,28 +1,9 @@
 <div (scroll)="onscroll()" [ngClass]="topBarFixed?'fixed':'nofixed'">
   <!-- Top Bar -->
-  <div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
-    <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
-    <button mat-button [matMenuTriggerFor]="languageMenu">
-      <span>{{ 'LANGUAGE' | translate }}</span>
-      <mat-icon>arrow_drop_down</mat-icon>
-    </button>
-    <mat-menu #languageMenu="matMenu">
-      <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
-      <button mat-menu-item (click)="changeLanguage('en')">English</button>
-    </mat-menu>
-    <button mat-button href="/register">{{ 'REGISTER' | translate }}</button>
-    <button mat-button href="/login">{{ 'LOGIN' | translate }}</button>
-  </div>
+  <app-top-bar></app-top-bar>
 
   <!-- Navigation -->
-  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
-    <mat-icon>home</mat-icon>
-    <h1 fxFlex="10"><strong>{{ 'WEBSITE_NAME' | translate}}</strong></h1>
-    <mat-form-field appearance="fill" fxFlex>
-      <input matInput placeholder="{{ 'SEARCH' | translate }}" [(ngModel)]="searchQuery">
-    </mat-form-field>
-    <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
-  </div>
+  <app-navigation></app-navigation>
 </div>
 
 <div class="main-container" fxLayout="row" fxLayoutAlign="center">

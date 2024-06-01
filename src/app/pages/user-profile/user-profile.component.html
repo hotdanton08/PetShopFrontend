@@ -1,25 +1,8 @@
 <!-- Top Bar -->
-<div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
-  <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
-  <button mat-button [matMenuTriggerFor]="languageMenu">
-    {{ 'LANGUAGE' | translate }}
-    <mat-icon>arrow_drop_down</mat-icon>
-  </button>
-  <mat-menu #languageMenu="matMenu">
-    <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
-    <button mat-menu-item (click)="changeLanguage('en')">English</button>
-  </mat-menu>
-  <button mat-button href="/register">{{ 'REGISTER' | translate }}</button>
-  <button mat-button href="/login">{{ 'LOGIN' | translate }}</button>
-</div>
+<app-top-bar></app-top-bar>
 
 <!-- User Profile Header -->
-<div fxLayout="row" fxLayoutAlign="start center" class="user-profile-header">
-  <mat-icon>home</mat-icon>
-  <h1><strong>{{ 'WEBSITE_NAME' | translate }}</strong></h1>
-  <h1><strong>|</strong></h1>
-  <h1><strong>{{ 'USER_PROFILE' | translate }}</strong></h1>
-</div>
+<app-header></app-header>
 
 <div fxLayout="row" class="main-container" fxLayoutAlign="center center">
   <!-- 左側選單 -->

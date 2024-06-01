@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-detail',
@@ -26,14 +25,10 @@ export class ProductDetailComponent implements OnInit {
   selectedOption = this.productOptions[0];
   isLoggedIn: boolean = false; // This should be dynamically checked
   description: string = '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述';
-  selectedLanguage = 'zh-TW';
-  searchQuery: string = '';
   quantity: number = 1;
 
-  constructor(private router: Router, private translate: TranslateService) {
+  constructor(private router: Router) {
     this.selectedImage = this.images[0];
-    this.translate.setDefaultLang(this.selectedLanguage);
-    this.translate.use(this.selectedLanguage);
   }
 
   ngOnInit(): void {
@@ -60,15 +55,6 @@ export class ProductDetailComponent implements OnInit {
   checkAvailability() {
     // Check if selected option is available
     console.log('Selected option:', this.selectedOption);
-  }
-
-  changeLanguage(lang: string) {
-    this.selectedLanguage = lang;
-    this.translate.use(lang);
-  }
-
-  goToCart() {
-    this.router.navigate(['/cart']);
   }
 
   increaseQuantity() {

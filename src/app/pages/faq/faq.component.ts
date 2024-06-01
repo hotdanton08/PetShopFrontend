@@ -1,7 +1,6 @@
 // src/app/components/faq/faq.component.ts
 import { Component, OnInit } from '@angular/core';
 // import { FaqService } from '../../services/faq.service';
-import { TranslateService } from '@ngx-translate/core';
 
 interface Faq {
   category: string;
@@ -29,7 +28,7 @@ export class FaqComponent implements OnInit {
 
   // constructor(private faqService: FaqService) { }
 
-  constructor(private translate: TranslateService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.filteredFaqs = this.faqs; // 初始加載所有問題
@@ -48,10 +47,5 @@ export class FaqComponent implements OnInit {
       this.filteredFaqs = this.faqs.filter(faq => faq.category === categories[index]);
       this.currentCategory = categories[index];
     }
-  }
-
-  changeLanguage(lang: string) {
-    //this.selectedLanguage = lang;
-    this.translate.use(lang);
   }
 }

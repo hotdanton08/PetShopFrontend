@@ -25,6 +25,9 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HeaderComponent } from './header/header.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,6 +45,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductDetailComponent,
     FaqComponent,
     UserProfileComponent,
+    TopBarComponent,
+    NavigationComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
