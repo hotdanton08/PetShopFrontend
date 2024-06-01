@@ -1,10 +1,24 @@
 <div fxLayout="column" fxLayoutAlign="center stretch">
   <!-- Top Bar -->
+  <div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
+    <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
+    <button mat-button [matMenuTriggerFor]="languageMenu">
+      {{ 'LANGUAGE' | translate }}
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
+      <button mat-menu-item (click)="changeLanguage('en')">English</button>
+    </mat-menu>
+    <button mat-button href="/register">{{ 'REGISTER' | translate }}</button>
+    <button mat-button href="/login">{{ 'LOGIN' | translate }}</button>
+  </div>
+
   <div fxLayout="row" fxLayoutAlign="start center" class="cart-header">
     <mat-icon>home</mat-icon>
-    <h1><strong>毛毛購物</strong></h1>
+    <h1><strong>{{ 'WEBSITE_NAME' | translate }}</strong></h1>
     <h1><strong>|</strong></h1>
-    <h1><strong>購物車</strong></h1>
+    <h1><strong>{{ 'SHOPPING_CART' | translate}}</strong></h1>
   </div>
 
   <!-- Cart Table -->
@@ -27,7 +41,7 @@
 
       <!-- Product Image and Name Column -->
       <ng-container matColumnDef="product">
-        <th mat-header-cell *matHeaderCellDef> 商品 </th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'PRODUCT' | translate }}</th>
         <td mat-cell *matCellDef="let element">
           <img [src]="element.image" alt="Product" class="product-image">
           <span>{{ element.name }}</span>
@@ -36,13 +50,13 @@
 
       <!-- Price Column -->
       <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> 單價 </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'UNIT_PRICE' | translate }}</th>
         <td mat-cell *matCellDef="let element"> {{ element.price | number:'1.0-0' }} </td>
       </ng-container>
 
       <!-- Quantity Column -->
       <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> 數量 </th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'QUANTITY' | translate }}</th>
         <td mat-cell *matCellDef="let element">
           <button mat-mini-fab (click)="updateQuantity(element, -1)" [disabled]="element.quantity <= 1">-</button>
           {{ element.quantity }}
@@ -52,13 +66,13 @@
 
       <!-- Total Column -->
       <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> 總計 </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'TOTAL' | translate }}</th>
         <td mat-cell *matCellDef="let element"> {{ element.price * element.quantity | number:'1.0-0' }} </td>
       </ng-container>
 
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> 操作 </th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'ACTION' | translate }}</th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button (click)="removeFromCart(element)">
             <mat-icon>delete</mat-icon>
@@ -73,7 +87,7 @@
 
   <!-- Cart Total Section -->
   <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="cart-total">
-    <span>總金額 ( {{ calculateNum() }} 個商品 ) : $ {{ calculateTotal() }}</span>
-    <button mat-raised-button (click)="checkout()" [disabled]="!selection.hasValue()">去買單</button>
+    <span>{{ 'TOTAL_AMOUNT' | translate }} ( {{ calculateNum() }} {{ 'ITEMS' | translate }} ) : $ {{ calculateTotal() }}</span>
+    <button mat-raised-button (click)="checkout()" [disabled]="!selection.hasValue()">{{ 'CHECKOUT' | translate }}</button>
   </div>
 </div>

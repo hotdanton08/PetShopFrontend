@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-detail',
@@ -29,8 +30,10 @@ export class ProductDetailComponent implements OnInit {
   searchQuery: string = '';
   quantity: number = 1;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private translate: TranslateService) {
     this.selectedImage = this.images[0];
+    this.translate.setDefaultLang(this.selectedLanguage);
+    this.translate.use(this.selectedLanguage);
   }
 
   ngOnInit(): void {
@@ -61,8 +64,7 @@ export class ProductDetailComponent implements OnInit {
 
   changeLanguage(lang: string) {
     this.selectedLanguage = lang;
-    console.log('語言已切換:', this.selectedLanguage);
-    // 這裡可以添加更多的邏輯來處理語言切換的後續操作
+    this.translate.use(lang);
   }
 
   goToCart() {

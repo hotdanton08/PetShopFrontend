@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Product {
   name: string;
@@ -30,7 +31,11 @@ export class HomeComponent implements OnInit {
   currentBannrIndex = 0;
   intervalBannerId: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translate: TranslateService) {
+    // 設置默認語言
+    this.translate.setDefaultLang('zh-TW');
+    this.translate.use(this.selectedLanguage);
+  }
 
   ngOnInit(): void {
     this.preloadImages();
@@ -88,8 +93,9 @@ export class HomeComponent implements OnInit {
     this.productImageLoaded = new Array(this.products.length).fill(false);
   }
 
-  changeLanguage() {
-    console.log('語言已切換:', this.selectedLanguage);
+  changeLanguage(lang: string) {
+    this.selectedLanguage = lang;
+    this.translate.use(lang);
   }
 
   goToProductDetail(product: any) {

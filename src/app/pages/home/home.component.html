@@ -1,23 +1,25 @@
 <div (scroll)="onscroll()" [ngClass]="topBarFixed?'fixed':'nofixed'">
   <!-- Top Bar -->
   <div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
-    <button mat-button href="/help">幫助中心</button>
-    <mat-form-field fxFlex="10">
-      <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
-        <mat-option value="zh-TW">繁體中文</mat-option>
-        <mat-option value="en">English</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button mat-button href="/register">註冊</button>
-    <button mat-button href="/login">登入</button>
+    <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
+    <button mat-button [matMenuTriggerFor]="languageMenu">
+      <span>{{ 'LANGUAGE' | translate }}</span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
+      <button mat-menu-item (click)="changeLanguage('en')">English</button>
+    </mat-menu>
+    <button mat-button href="/register">{{ 'REGISTER' | translate }}</button>
+    <button mat-button href="/login">{{ 'LOGIN' | translate }}</button>
   </div>
 
   <!-- Navigation -->
   <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
     <mat-icon>home</mat-icon>
-    <h1 fxFlex="10"><strong >毛毛購物</strong></h1>
+    <h1 fxFlex="10"><strong>{{ 'WEBSITE_NAME' | translate}}</strong></h1>
     <mat-form-field appearance="fill" fxFlex>
-      <input matInput placeholder="搜尋..." [(ngModel)]="searchQuery">
+      <input matInput placeholder="{{ 'SEARCH' | translate }}" [(ngModel)]="searchQuery">
     </mat-form-field>
     <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
   </div>
@@ -41,8 +43,8 @@
             </c-carousel-caption>
           </c-carousel-item>
         </c-carousel-inner>
-        <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-        <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+        <c-carousel-control [routerLink] caption="{{ 'PREVIOUS' | translate }}" direction="prev"></c-carousel-control>
+        <c-carousel-control [routerLink] caption="{{ 'NEXT' | translate }}" direction="next"></c-carousel-control>
       </c-carousel>
     </div>
 

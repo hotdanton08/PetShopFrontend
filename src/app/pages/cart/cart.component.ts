@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 interface CartItem {
   id: number;
@@ -20,6 +21,7 @@ export class CartComponent implements OnInit {
   displayedColumns: string[] = ['select', 'product', 'price', 'quantity', 'total', 'actions'];
   dataSource = new MatTableDataSource<CartItem>();
   selection = new SelectionModel<CartItem>(true, []);
+  selectedLanguage = 'zh-TW';
 
   cartItems: CartItem[] = [
     { id: 1, name: '產品一', price: 100, quantity: 1, image: 'https://picsum.photos/150/150?random=1' },
@@ -27,10 +29,12 @@ export class CartComponent implements OnInit {
     { id: 3, name: '產品三', price: 300, quantity: 3, image: 'https://picsum.photos/150/150?random=3' }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.dataSource.data = this.cartItems;
+    this.translate.setDefaultLang(this.selectedLanguage);
+    this.translate.use(this.selectedLanguage);
   }
 
   isAllSelected() {
@@ -77,5 +81,10 @@ export class CartComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['/home']);
+  }
+
+  changeLanguage(lang: string) {
+    this.selectedLanguage = lang;
+    this.translate.use(lang);
   }
 }

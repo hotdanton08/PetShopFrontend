@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,8 +16,9 @@ export class UserProfileComponent implements OnInit {
   months: number[] = [];
   years: number[] = [];
   showProfile = true; // 用於控制顯示的表單
+  selectedLanguage = 'zh-TW';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private translate: TranslateService) {
     this.userProfileForm = this.fb.group({
       email: [{ value: this.email, disabled: true }, [Validators.required, Validators.email]],
       name: [''],
@@ -38,6 +40,9 @@ export class UserProfileComponent implements OnInit {
     this.months = Array.from({ length: 12 }, (_, i) => i + 1);
     const currentYear = new Date().getFullYear();
     this.years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+
+    this.translate.setDefaultLang(this.selectedLanguage);
+    this.translate.use(this.selectedLanguage);
   }
 
   ngOnInit(): void {
@@ -71,5 +76,10 @@ export class UserProfileComponent implements OnInit {
   // 切換顯示的表單
   toggleForm(showProfile: boolean) {
     this.showProfile = showProfile;
+  }
+
+  changeLanguage(lang: string) {
+    this.selectedLanguage = lang;
+    this.translate.use(lang);
   }
 }

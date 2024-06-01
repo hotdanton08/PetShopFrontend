@@ -20,6 +20,10 @@
   width: 50px;
 }
 
+.navigation mat-form-field {
+  padding-top: 10px;
+}
+
 .main-container {
   background-color: #F5F5F5;
 }
