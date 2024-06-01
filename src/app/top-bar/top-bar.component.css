@@ -6,3 +6,8 @@
 .top-bar button {
   color: white;
 }
+
+.language-button {
+  display: flex;
+  align-items: center;
+}

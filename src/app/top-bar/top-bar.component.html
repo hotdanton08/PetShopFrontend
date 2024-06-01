@@ -1,8 +1,10 @@
 <div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
   <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
   <button mat-button [matMenuTriggerFor]="languageMenu">
-    <span>{{ 'LANGUAGE' | translate }}</span>
-    <mat-icon>arrow_drop_down</mat-icon>
+    <span class="language-button">
+      <span>{{ 'LANGUAGE' | translate }}</span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </span>
   </button>
   <mat-menu #languageMenu="matMenu">
     <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
