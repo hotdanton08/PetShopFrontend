@@ -2,18 +2,18 @@
 <app-top-bar></app-top-bar>
 
 <!-- User Profile Header -->
-<app-header></app-header>
+<app-header [headerName]="'USER_CENTER'"></app-header>
 
 <div fxLayout="row" class="main-container" fxLayoutAlign="center center">
   <!-- 左側選單 -->
-  <mat-sidenav-container class="sidenav-container" fxFlex="80">
+  <mat-sidenav-container class="sidenav-container" fxFlex="50">
     <mat-sidenav mode="side" opened>
       <mat-nav-list>
-        <mat-list-item (click)="toggleForm(true)">
+        <mat-list-item (click)="toggleForm(true)" [ngClass]="{ 'selected': selected === 'profile' }">
           <mat-icon matListIcon>person</mat-icon>
           <span matLine>{{ 'USER_PROFILE' | translate }}</span>
         </mat-list-item>
-        <mat-list-item (click)="toggleForm(false)">
+        <mat-list-item (click)="toggleForm(false)" [ngClass]="{ 'selected': selected === 'password' }">
           <mat-icon matListIcon>lock</mat-icon>
           <span matLine>{{ 'CHANGE_PASSWORD' | translate }}</span>
         </mat-list-item>
@@ -21,8 +21,8 @@
     </mat-sidenav>
 
     <!-- 主要內容 -->
-    <mat-sidenav-content>
-      <div class="user-profile-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-sidenav-content class="user-profile-container">
+      <div fxLayout="column">
         <mat-card class="user-profile-card" *ngIf="showProfile">
           <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">

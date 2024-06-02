@@ -1,13 +1,24 @@
+
+.main-container {
+  margin: 1rem 0;
+}
+
 .user-profile-container {
-  margin: 20px 0;
+  background-color: white;
 }
 
 .user-profile-card {
   padding: 20px;
-  width: 80%;
 }
 
 mat-form-field {
   width: 100%;
 }
 
+.selected span {
+  color: #00A4A6;
+}
+
+.selected mat-icon {
+  color: #00A4A6;
+}
