@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 interface Product {
   name: string;
@@ -29,13 +31,16 @@ export class HomeComponent implements OnInit {
   topBarFixed:boolean = false;
   currentBannrIndex = 0;
   intervalBannerId: any;
+  cols: number = 5; // 默認列數
+  breakpointSubscription: Subscription | undefined;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
   }
 
   ngOnInit(): void {
     this.preloadImages();
     this.loadProducts();
+    this.setupGridCols();
   }
 
   preloadImages() {
@@ -55,6 +60,9 @@ export class HomeComponent implements OnInit {
 
   ngOnDestroy() {
     clearInterval(this.intervalBannerId);
+    if (this.breakpointSubscription) {
+      this.breakpointSubscription.unsubscribe();
+    }
   }
 
   @HostListener('window:scroll',['$event']) onscroll(){
@@ -92,5 +100,30 @@ export class HomeComponent implements OnInit {
   goToProductDetail(product: any) {
     // 假設產品詳情路由設置為 '/products/:id'
     this.router.navigate(['/products', product.id]);
+  }
+
+  setupGridCols() {
+    // 設置響應式斷點監聽
+    this.breakpointSubscription = this.breakpointObserver.observe([
+      '(max-width: 600px)',
+      '(max-width: 960px)',
+      '(max-width: 1280px)',
+      '(max-width: 1600px)',
+      '(max-width: 1920px)'
+    ]).subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        if (state.breakpoints['(max-width: 600px)']) {
+          this.cols = 1;
+        } else if (state.breakpoints['(max-width: 960px)']) {
+          this.cols = 2;
+        } else if (state.breakpoints['(max-width: 1280px)']) {
+          this.cols = 3;
+        } else if (state.breakpoints['(max-width: 1600px)']) {
+          this.cols = 4;
+        } else if (state.breakpoints['(max-width: 1920px)']) {
+          this.cols = 5;
+        }
+      }
+    });
   }
 }
