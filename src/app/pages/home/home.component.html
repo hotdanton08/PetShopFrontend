@@ -30,7 +30,7 @@
     </div>
 
     <!-- Product List -->
-    <mat-grid-list cols="5" rowHeight="1:1.5" gutterSize="10px">
+    <mat-grid-list cols="5" rowHeight="1:1.3" gutterSize="10px">
       <mat-grid-tile *ngFor="let product of products; let i = index">
         <mat-card appMaterialElevation class="product-item" (click)="goToProductDetail(product)">
           <mat-card-header>
@@ -39,8 +39,11 @@
             (load)="onProductImageLoad(i)">
           </mat-card-header>
           <mat-card-content>
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.price | currency }}</p>
+            <h5>{{ product.name }}</h5>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <p class="product-price">{{ product.price | currency }}</p>
+              <p class="product-sold">已售出 {{ product.sold }}</p>
+            </div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

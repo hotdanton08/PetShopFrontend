@@ -5,6 +5,7 @@ interface Product {
   name: string;
   price: number;
   image: string;
+  sold: number;
 }
 
 @Component({
@@ -70,19 +71,19 @@ export class HomeComponent implements OnInit {
   loadProducts() {
     // 假設從API加載產品數據
     this.products = [
-      { name: '犬用超級營養糧-成犬配方 5kg', price: 100, image: 'https://picsum.photos/150/150?random=1' },
-      { name: '貓咪護理潔耳液 120ml 專業版', price: 100, image: 'https://picsum.photos/150/150?random=2' },
-      { name: '活力兔專用高纖維飼料 3kg', price: 100, image: 'https://picsum.photos/150/150?random=3' },
-      { name: '貓咪保健零食-海洋魚油配方 150g 滋補毛髮', price: 100, image: 'https://picsum.photos/150/150?random=4' },
-      { name: '高級皮革狗項圈 加厚防斷裂 45cm', price: 100, image: 'https://picsum.photos/150/150?random=5' },
-      { name: '安全型寵物電子識別晶片', price: 100, image: 'https://picsum.photos/150/150?random=6' },
-      { name: '水族專用活性碳過濾器 200L 淨化水質', price: 100, image: 'https://picsum.photos/150/150?random=7' },
-      { name: '鳥類綜合礦物石 250g 提升羽毛亮度', price: 100, image: 'https://picsum.photos/150/150?random=8' },
-      { name: '無穀物全犬種洗毛精 500ml 植物香氛', price: 100, image: 'https://picsum.photos/150/150?random=9' },
-      { name: 'CeraVe適樂膚 全效亮眼修護精萃 14ml 改善眼周困擾組 官方旗艦店', price: 200, image: 'https://picsum.photos/150/150?random=10' },
-      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=11' },
-      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=12' },
-      { name: '產品', price: 200, image: 'https://picsum.photos/150/150?random=13' }
+      { name: '犬用超級營養糧-成犬配方 5kg', price: 100, image: 'https://picsum.photos/150/150?random=1', sold: 200 },
+    { name: '貓咪護理潔耳液 120ml 專業版', price: 100, image: 'https://picsum.photos/150/150?random=2', sold: 150 },
+    { name: '活力兔專用高纖維飼料 3kg', price: 100, image: 'https://picsum.photos/150/150?random=3', sold: 120 },
+    { name: '貓咪保健零食-海洋魚油配方 150g 滋補毛髮', price: 100, image: 'https://picsum.photos/150/150?random=4', sold: 80 },
+    { name: '高級皮革狗項圈 加厚防斷裂 45cm', price: 100, image: 'https://picsum.photos/150/150?random=5', sold: 90 },
+    { name: '安全型寵物電子識別晶片', price: 100, image: 'https://picsum.photos/150/150?random=6', sold: 70 },
+    { name: '水族專用活性碳過濾器 200L 淨化水質', price: 100, image: 'https://picsum.photos/150/150?random=7', sold: 60 },
+    { name: '鳥類綜合礦物石 250g 提升羽毛亮度', price: 100, image: 'https://picsum.photos/150/150?random=8', sold: 50 },
+    { name: '無穀物全犬種洗毛精 500ml 植物香氛', price: 100, image: 'https://picsum.photos/150/150?random=9', sold: 200 },
+    { name: 'CeraVe適樂膚 全效亮眼修護精萃 14ml 改善眼周困擾組 官方旗艦店', price: 200, image: 'https://picsum.photos/150/150?random=10', sold: 300 },
+      { name: '產品', price: 200, sold: 1, image: 'https://picsum.photos/150/150?random=11' },
+      { name: '產品', price: 200, sold: 0, image: 'https://picsum.photos/150/150?random=12' },
+      { name: '產品', price: 200, sold: 2, image: 'https://picsum.photos/150/150?random=13' }
     ]
 
     this.productImageLoaded = new Array(this.products.length).fill(false);

@@ -85,11 +85,19 @@ mat-progress-spinner {
   border-color: #00A4A6;
 }
 
-.product-item p {
+.product-item img {
+  padding-bottom: 10px;
+}
+
+.product-price {
   color: #00A4A6;
 }
 
-.product-item h3 {
+.product-sold {
+  color: #757575;
+}
+
+.product-item h5 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
