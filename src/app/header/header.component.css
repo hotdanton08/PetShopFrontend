@@ -3,14 +3,6 @@
   background-color: #00A4A6;
 }
 
-.cart-header h1 {
-  margin-right: 20px; /* 為每個 h1 添加右邊距 */
-}
-
-.cart-header h1:last-child {
-  margin-right: 0; /* 為最後一個 h1 移除右邊距 */
-}
-
 .cart-header mat-icon {
   margin-bottom: 8px;
   font-size: 50px;
