@@ -6,9 +6,9 @@
   <app-header [headerName]="'USER_CENTER'"></app-header>
 </div>
 
-<div fxLayout="row" class="main-container" fxLayoutAlign="center center">
-  <!-- 左側選單 -->
+<div fxLayout="row" fxLayoutAlign="center center">
   <mat-sidenav-container class="sidenav-container" fxFlex="50">
+    <!-- 左側選單 -->
     <mat-sidenav mode="side" opened>
       <mat-nav-list>
         <mat-list-item (click)="toggleForm(true)" [ngClass]="{ 'selected': selected === 'profile' }">

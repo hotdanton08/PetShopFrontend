@@ -2,10 +2,6 @@
   background-color: #00A4A6;
 }
 
-.main-container {
-  margin: 1rem 0;
-}
-
 .user-profile-container {
   background-color: white;
 }
@@ -16,6 +12,11 @@
 
 mat-form-field {
   width: 100%;
+}
+
+.sidenav-container {
+  margin: 20px 0;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
 }
 
 .sidenav-container span {
