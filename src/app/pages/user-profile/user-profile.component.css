@@ -8,6 +8,7 @@
 
 .user-profile-card {
   padding: 20px;
+  height: 350px;
 }
 
 mat-form-field {
