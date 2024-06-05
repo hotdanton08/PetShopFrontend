@@ -32,6 +32,10 @@ table th {
   text-align: center;
 }
 
+.mat-column-quantity button {
+  margin: 0 8px;
+}
+
 .mat-column-total {
   text-align: center;
 }
