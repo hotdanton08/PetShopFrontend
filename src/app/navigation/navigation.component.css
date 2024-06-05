@@ -5,12 +5,8 @@
 }
 
 .navigation mat-icon {
-  margin-bottom: 8px;
+  margin-bottom: 21px;
   font-size: 50px;
   height: 50px;
   width: 50px;
-}
-
-.navigation mat-form-field {
-  padding-top: 10px;
 }
