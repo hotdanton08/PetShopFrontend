@@ -18,6 +18,14 @@ mat-form-field {
   width: 100%;
 }
 
+.sidenav-container span {
+  font-size: 25px;
+}
+
+.sidenav-container mat-icon {
+  height: 20px;
+}
+
 .selected span {
   color: #00A4A6;
 }
