@@ -4,7 +4,7 @@
 
 .cart-container {
   margin: 20px 0;
-  padding: 10px;
+  padding: 20px;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
 }
 
@@ -48,6 +48,11 @@ table th {
 .mat-column-actions {
   width: 120px;
   text-align: center;
+}
+
+mat-divider {
+  margin-top: 30px;
+  border-top-width: 3px;      /* 更改分隔線厚度 */
 }
 
 .cart-total {

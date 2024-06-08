@@ -74,8 +74,9 @@
       </div>
 
       <!-- Cart Total Section -->
+      <mat-divider></mat-divider>
       <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="cart-total">
-        <span>{{ 'TOTAL_AMOUNT' | translate }} ( {{ calculateNum() }} {{ 'ITEMS' | translate }} ) : $ {{ calculateTotal() }}</span>
+        <span><strong>{{ 'TOTAL_AMOUNT' | translate }} ( {{ calculateNum() }} {{ 'ITEMS' | translate }} ) : $ {{ calculateTotal() }}</strong></span>
         <button mat-raised-button (click)="checkout()" [disabled]="!selection.hasValue()">{{ 'CHECKOUT' | translate }}</button>
       </div>
     </div>
