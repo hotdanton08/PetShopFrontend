@@ -1,3 +1,19 @@
 .top-container {
   background-color: #00A4A6;
 }
+
+.faq-container {
+  background-color: white;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+.faq-container h2 {
+  margin: 20px 0;
+}
+
+.mat-expansion-panel-header-title {
+  font-size: 16px;
+  font-weight: bold;
+}
