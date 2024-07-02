@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
+import { ProductService } from '../../services/product.service';
 
 interface Product {
   name: string;
@@ -33,13 +34,21 @@ export class HomeComponent implements OnInit {
   intervalBannerId: any;
   cols: number = 5; // 默認列數
   breakpointSubscription: Subscription | undefined;
+  productsTest: any[] = [];
+  productImageLoadedTest!: boolean[];
 
-  constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
+  constructor(private router: Router, private breakpointObserver: BreakpointObserver, private productService: ProductService) {
   }
 
   ngOnInit(): void {
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
+      this.productImageLoaded = new Array(this.products.length).fill(false);
+      console.log("data => ", this.products);
+    });
+
     this.preloadImages();
-    this.loadProducts();
+    //this.loadProducts();
     this.setupGridCols();
   }
 
