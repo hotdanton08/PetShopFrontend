@@ -1,23 +1,22 @@
+<div class="top-container">
+  <!-- Top Bar -->
+  <app-top-bar></app-top-bar>
 
-<!-- Faq Header -->
-<div fxLayout="row" fxLayoutAlign="start center" class="faq-header">
-  <mat-icon>home</mat-icon>
-  <h1><strong>毛毛購物</strong></h1>
-  <h1><strong>|</strong></h1>
-  <h1><strong>幫助中心</strong></h1>
+  <!-- Faq Header -->
+  <app-header [headerName]="'HELP_CENTER'"></app-header>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center">
   <div class="faq-container" fxFlex="80">
     <mat-tab-group animationDuration="0ms" (selectedIndexChange)="selectTab($event)">
-      <mat-tab label="全部問題"></mat-tab>
-      <mat-tab label="新手上路"></mat-tab>
-      <mat-tab label="訂單與物流"></mat-tab>
-      <mat-tab label="退貨與退款"></mat-tab>
-      <mat-tab label="購物安全與其他"></mat-tab>
-      <mat-tab label="付款或帳務問題"></mat-tab>
-      <mat-tab label="優惠與促銷活動"></mat-tab>
-      <mat-tab label="電子票券與繳費"></mat-tab>
+      <mat-tab label="{{'ALL_QUESTIONS' | translate}}"></mat-tab>
+      <mat-tab label="{{'BEGINNERS' | translate}}"></mat-tab>
+      <mat-tab label="{{'ORDERS_AND_LOGISTICS' | translate}}"></mat-tab>
+      <mat-tab label="{{'RETURNS_AND_REFUNDS' | translate}}"></mat-tab>
+      <mat-tab label="{{'SHOPPING_SECURITY_AND_OTHERS' | translate}}"></mat-tab>
+      <mat-tab label="{{'PAYMENT_OR_ACCOUNT_ISSUES' | translate}}"></mat-tab>
+      <mat-tab label="{{'PROMOTIONS_AND_CAMPAIGNS' | translate}}"></mat-tab>
+      <mat-tab label="{{'E_TICKETS_AND_PAYMENTS' | translate}}"></mat-tab>
     </mat-tab-group>
 
     <h2 style="margin-top: 20px;">{{ currentCategory }}</h2>

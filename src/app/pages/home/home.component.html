@@ -1,26 +1,9 @@
 <div (scroll)="onscroll()" [ngClass]="topBarFixed?'fixed':'nofixed'">
   <!-- Top Bar -->
-  <div fxLayout="row" fxLayoutAlign="end center">
-    <button mat-button href="/help">幫助中心</button>
-    <mat-form-field fxFlex="10">
-      <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
-        <mat-option value="zh-TW">繁體中文</mat-option>
-        <mat-option value="en">English</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <a mat-button href="/register">註冊</a>
-    <a mat-button href="/login">登入</a>
-  </div>
+  <app-top-bar></app-top-bar>
 
   <!-- Navigation -->
-  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
-    <mat-icon>home</mat-icon>
-    <h1 fxFlex="10"><strong >毛毛購物</strong></h1>
-    <mat-form-field appearance="fill" fxFlex>
-      <input matInput placeholder="搜尋..." [(ngModel)]="searchQuery">
-    </mat-form-field>
-    <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
-  </div>
+  <app-navigation></app-navigation>
 </div>
 
 <div class="main-container" fxLayout="row" fxLayoutAlign="center">
@@ -33,7 +16,7 @@
         <c-carousel-inner>
           <c-carousel-item *ngFor="let slide of slides; let i = index" class="image-container">
             <mat-progress-spinner *ngIf="!bannerImageLoaded[i]" mode="indeterminate"></mat-progress-spinner>
-            <img [lazyLoad]="slide.src" alt="{{slide.title}}" class="d-block w-100"
+            <img [lazyLoad]="slide.src" [errorImage]="errorImage" class="d-block w-100"
               (load)="onBannerImageLoad(i)" [hidden]="!bannerImageLoaded[i]"/>
             <c-carousel-caption class="d-none d-md-block">
               <h3>{{slide.title}}</h3>
@@ -41,13 +24,13 @@
             </c-carousel-caption>
           </c-carousel-item>
         </c-carousel-inner>
-        <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-        <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+        <c-carousel-control [routerLink] caption="{{ 'PREVIOUS' | translate }}" direction="prev"></c-carousel-control>
+        <c-carousel-control [routerLink] caption="{{ 'NEXT' | translate }}" direction="next"></c-carousel-control>
       </c-carousel>
     </div>
 
     <!-- Product List -->
-    <mat-grid-list cols="5" rowHeight="1:1.5" gutterSize="10px">
+    <mat-grid-list [cols]="cols" rowHeight="1:1.3" gutterSize="10px" class="grid-product">
       <mat-grid-tile *ngFor="let product of products; let i = index">
         <mat-card appMaterialElevation class="product-item" (click)="goToProductDetail(product)">
           <mat-card-header>
@@ -56,8 +39,11 @@
             (load)="onProductImageLoad(i)">
           </mat-card-header>
           <mat-card-content>
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.price | currency }}</p>
+            <h5>{{ product.name }}</h5>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <p class="product-price">{{ product.price | currency }}</p>
+              <p class="product-sold">已售出 {{ product.sold }}</p>
+            </div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

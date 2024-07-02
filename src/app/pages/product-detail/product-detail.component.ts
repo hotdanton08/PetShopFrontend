@@ -25,8 +25,6 @@ export class ProductDetailComponent implements OnInit {
   selectedOption = this.productOptions[0];
   isLoggedIn: boolean = false; // This should be dynamically checked
   description: string = '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述';
-  selectedLanguage = 'zh-TW';
-  searchQuery: string = '';
   quantity: number = 1;
 
   constructor(private router: Router) {
@@ -57,14 +55,6 @@ export class ProductDetailComponent implements OnInit {
   checkAvailability() {
     // Check if selected option is available
     console.log('Selected option:', this.selectedOption);
-  }
-
-  changeLanguage() {
-    console.log('語言已切換:', this.selectedLanguage);
-  }
-
-  goToCart() {
-    this.router.navigate(['/cart']);
   }
 
   increaseQuantity() {

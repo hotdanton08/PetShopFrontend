@@ -1,25 +1,47 @@
-.user-profile-header {
-  color: white;
+.top-container {
   background-color: #00A4A6;
 }
 
-.user-profile-header mat-icon {
-  margin-bottom: 8px;
-  font-size: 50px;
-  height: 50px;
-  width: 50px;
+.mat-sidenav {
+  margin: 10px;
 }
 
 .user-profile-container {
-  margin: 20px 0;
+  background-color: white;
 }
 
 .user-profile-card {
   padding: 20px;
-  width: 80%;
+  height: 400px;
 }
 
-mat-form-field {
+.user-profile-card mat-form-field {
   width: 100%;
+  margin: 5px;
 }
 
+.user-profile-card button {
+  margin: 5px;
+}
+
+.sidenav-container {
+  margin: 20px 0;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+.sidenav-container mat-icon {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.sidenav-container span {
+  margin-right: 20px;
+}
+
+.selected span {
+  color: #00A4A6;
+}
+
+.selected mat-icon {
+  color: #00A4A6;
+}

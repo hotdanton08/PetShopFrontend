@@ -1,16 +1,5 @@
-.top-bar {
+.top-container {
   background-color: #00A4A6;
-}
-
-.navigation {
-  background-color: #00A4A6;
-}
-
-.navigation mat-icon {
-  margin-bottom: 15px;
-  font-size: 50px;
-  height: 50px;
-  width: 50px;
 }
 
 .main-container {
@@ -64,6 +53,15 @@ body {
 
 .option-button {
   padding: 10px;
+  padding-left: 0; /* 預設情況下移除左側間距 */
+}
+
+.option-button:not(:first-child) {
+  padding-left: 5px; /* 只有不是第一個元素才加上左側間距 */
+}
+
+.option-button:not(:last-child) {
+  padding-right: 5px; /* 只有不是最後一個元素才加上右側間距 */
 }
 
 .quantity-container {
@@ -73,9 +71,13 @@ body {
 .quantity-button {
   background-color: #00A4A6;
   margin: 20px;
+  font-size: 20px;
 }
 
 .add-to-cart {
   width: 100%;
   background-color: #00A4A6;
+  color: white !important;
+  font-size: 20px;
+  font-weight: bold;
 }

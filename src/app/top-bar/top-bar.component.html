@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="top-bar" fxLayout="row" fxLayoutAlign="end center" fxFlex="100" fxFlex.gt-sm="80">
+    <button mat-button href="/help">{{ 'HELP_CENTER' | translate }}</button>
+    <button mat-button [matMenuTriggerFor]="languageMenu">
+      <span class="language-button">
+        <span>{{ 'LANGUAGE' | translate }}</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </span>
+    </button>
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
+      <button mat-menu-item (click)="changeLanguage('en')">English</button>
+    </mat-menu>
+    <button mat-button href="/register">{{ 'REGISTER' | translate }}</button>
+    <button mat-button href="/login">{{ 'LOGIN' | translate }}</button>
+  </div>
+</div>
+

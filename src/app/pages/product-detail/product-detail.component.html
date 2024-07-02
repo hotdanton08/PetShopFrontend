@@ -1,24 +1,9 @@
-<!-- Top Bar -->
-<div class="top-bar" fxLayout="row" fxLayoutAlign="end center">
-  <button mat-button href="/help">幫助中心</button>
-  <mat-form-field fxFlex="10">
-    <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="changeLanguage()">
-      <mat-option value="zh-TW">繁體中文</mat-option>
-      <mat-option value="en">English</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <a mat-button href="/register">註冊</a>
-  <a mat-button href="/login">登入</a>
-</div>
+<div class="top-container">
+  <!-- Top Bar -->
+  <app-top-bar></app-top-bar>
 
-<!-- Navigation -->
-<div class="navigation" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="navigation">
-  <mat-icon>home</mat-icon>
-  <h1 fxFlex="10"><strong>毛毛購物</strong></h1>
-  <mat-form-field appearance="fill" fxFlex>
-    <input matInput placeholder="搜尋..." [(ngModel)]="searchQuery">
-  </mat-form-field>
-  <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()">shopping_cart</mat-icon>
+  <!-- Navigation -->
+  <app-navigation></app-navigation>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center">
@@ -37,16 +22,19 @@
       <!-- Right: Product Info -->
       <div>
         <h1>【MLM】華夫格 短袖t恤 男 夏季 韓版 潮流 休閑 簡約百搭 寬松 ins情侶 五分袖 半袖 短袖T恤青少年短袖上衣</h1>
-        <h3 class="sold-count">{{ soldCount }} 已售出</h3>
+        <h3 class="sold-count">{{ 'PRODUCT_SOLD' | translate:{soldCount: soldCount} }}</h3>
         <div class="price-container">
           <h3 class="price">$ {{ price }}</h3>
         </div>
         <div fxLayout="row">
           <div *ngFor="let option of productOptions" class="option-button">
             <button mat-raised-button
-              [ngStyle]="{'background-color': selectedOption === option ? '#00A4A6' : ''}"
+              [ngStyle]="{
+                'background-color': selectedOption === option ? '#00A4A6' : '',
+                'color': selectedOption === option ? 'white' : ''
+              }"
               (click)="selectOption(option)">
-              {{ option.name }}
+              {{ option.name | translate }}
             </button>
           </div>
         </div>
@@ -55,17 +43,16 @@
           <span>{{ quantity }}</span>
           <button mat-mini-fab class="quantity-button" (click)="increaseQuantity()">+</button>
         </div>
-        <button mat-button class="add-to-cart">加入購物車</button>
+        <button mat-button class="add-to-cart">{{ 'ADD_TO_CART' | translate }}</button>
       </div>
     </mat-card>
 
     <!-- Below: Product description -->
     <div fxLayout="column" class="product-description">
       <mat-card style="padding: 30px;">
-        <h2>商品描述:</h2>
+        <h2>{{ 'PRODUCT_DESCRIPTION' | translate }}</h2>
         <p>{{ description }}</p>
       </mat-card>
     </div>
   </div>
 </div>
-

@@ -1,65 +1,51 @@
-<!-- User Profile Header -->
-<div fxLayout="row" fxLayoutAlign="start center" class="user-profile-header">
-  <mat-icon>home</mat-icon>
-  <h1><strong>毛毛購物</strong></h1>
-  <h1><strong>|</strong></h1>
-  <h1><strong>用戶中心</strong></h1>
+<div class="top-container">
+  <!-- Top Bar -->
+  <app-top-bar></app-top-bar>
+
+  <!-- User Profile Header -->
+  <app-header [headerName]="'USER_CENTER'"></app-header>
 </div>
 
-<div fxLayout="row" class="main-container" fxLayoutAlign="center center">
-  <!-- 左側選單 -->
-  <mat-sidenav-container class="sidenav-container" fxFlex="80">
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-sidenav-container class="sidenav-container" fxFlex="50">
+    <!-- 左側選單 -->
     <mat-sidenav mode="side" opened>
       <mat-nav-list>
-        <mat-list-item (click)="toggleForm(true)">
+        <mat-list-item (click)="toggleForm(true)" [ngClass]="{ 'selected': selected === 'profile' }">
           <mat-icon matListIcon>person</mat-icon>
-          <span matLine>個人檔案</span>
+          <span matLine>{{ 'USER_PROFILE' | translate }}</span>
         </mat-list-item>
-        <mat-list-item (click)="toggleForm(false)">
+        <mat-list-item (click)="toggleForm(false)" [ngClass]="{ 'selected': selected === 'password' }">
           <mat-icon matListIcon>lock</mat-icon>
-          <span matLine>更改密碼</span>
+          <span matLine>{{ 'CHANGE_PASSWORD' | translate }}</span>
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
 
     <!-- 主要內容 -->
-    <mat-sidenav-content>
-      <div class="user-profile-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-sidenav-content class="user-profile-container">
+      <div fxLayout="column">
         <mat-card class="user-profile-card" *ngIf="showProfile">
           <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
-              <mat-label>Email</mat-label>
+              <mat-label>{{ 'EMAIL' | translate }}</mat-label>
               <input matInput formControlName="email">
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>姓名</mat-label>
+              <mat-label>{{ 'NAME' | translate }}</mat-label>
               <input matInput formControlName="name">
             </mat-form-field>
             <mat-radio-group formControlName="gender">
               <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-radio-button>
             </mat-radio-group>
-            <div fxLayout="row" fxLayoutGap="10px">
-              <mat-form-field appearance="fill" fxFlex="30">
-                <mat-label>出生日</mat-label>
-                <mat-select formControlName="day">
-                  <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="fill" fxFlex="30">
-                <mat-label>出生月</mat-label>
-                <mat-select formControlName="month">
-                  <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="fill" fxFlex="40">
-                <mat-label>出生年</mat-label>
-                <mat-select formControlName="year">
-                  <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'BIRTHDAY' | translate }}</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
             <button mat-raised-button color="primary" type="submit" [disabled]="!userProfileForm.valid">
-              儲存
+              {{ 'SAVE' | translate }}
             </button>
           </form>
         </mat-card>
@@ -67,24 +53,24 @@
         <mat-card class="user-profile-card" *ngIf="!showProfile">
           <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePasswordSubmit()">
             <mat-form-field appearance="fill">
-              <mat-label>密碼</mat-label>
+              <mat-label>{{ 'PASSWORD' | translate }}</mat-label>
               <input matInput type="password" formControlName="password" required>
               <mat-error *ngIf="changePasswordForm.get('password')?.hasError('required')">
-                請輸入密碼
+                {{ 'ENTER_PASSWORD' | translate }}
               </mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>確認密碼</mat-label>
+              <mat-label>{{ 'CONFIRM_PASSWORD' | translate }}</mat-label>
               <input matInput type="password" formControlName="confirmPassword" required>
               <mat-error *ngIf="!changePasswordMatch">
-                密碼不匹配
+                {{ 'PASSWORD_MISMATCH' | translate }}
               </mat-error>
               <mat-error *ngIf="changePasswordForm.get('confirmPassword')?.hasError('required')">
-                請輸入確認密碼
+                {{ 'ENTER_CONFIRM_PASSWORD' | translate }}
               </mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" type="submit" [disabled]="!changePasswordForm.valid || !changePasswordMatch">
-              儲存
+              {{ 'SAVE' | translate }}
             </button>
           </form>
         </mat-card>

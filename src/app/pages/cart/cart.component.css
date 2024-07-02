@@ -1,19 +1,61 @@
+.top-container {
+  background-color: #00A4A6;
+}
+
 .cart-container {
-  width: 100%;
-  background: #f0f0f0;
+  background-color: white;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+table th {
+  font-weight: bold;
+  font-size: 20px;
+  color: #888897;
+}
+
+.mat-column-select {
+  width: 50px;
+  text-align: center;
 }
 
 .product-image {
-  width: 50px;
-  height: auto;
-  margin-right: 10px;
+  width: 5rem;
+  height: 80px;
+  margin: 10px 10px 10px 0;
 }
 
-mat-checkbox {
-  margin-right: 10px;
+.mat-column-price {
+  text-align: center;
+  font-size: 16px;
+}
+
+.mat-column-quantity {
+  width: 12rem;
+  text-align: center;
+  font-size: 16px;
+}
+
+.mat-column-quantity button {
+  margin: 0 8px;
+}
+
+.mat-column-total {
+  text-align: center;
+  font-size: 16px;
+}
+
+.mat-column-actions {
+  width: 120px;
+  text-align: center;
+}
+
+mat-divider {
+  margin-top: 30px;
+  border-top-width: 3px;      /* 更改分隔線厚度 */
 }
 
 .cart-total {
   margin-top: 20px;
-  text-align: right;
 }

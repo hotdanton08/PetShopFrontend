@@ -1,3 +1,7 @@
-<mat-card class="mat-card-custom">
-  bbbbbbbb
-</mat-card>
+<button mat-button [matMenuTriggerFor]="languageMenu" style="display: flex; align-items: center;">
+  Language
+  <mat-icon style="margin-left: auto;">arrow_drop_down</mat-icon>
+</button>
+<mat-menu #languageMenu="matMenu">
+  <!-- 菜單內容 -->
+</mat-menu>

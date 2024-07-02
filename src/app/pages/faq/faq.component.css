@@ -1,11 +1,19 @@
-.faq-header {
-  color: white;
+.top-container {
   background-color: #00A4A6;
 }
 
-.faq-header mat-icon {
-  margin-bottom: 8px;
-  font-size: 50px;
-  height: 50px ;
-  width: 50px;
+.faq-container {
+  background-color: white;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+.faq-container h2 {
+  margin: 20px 0;
+}
+
+.mat-expansion-panel-header-title {
+  font-size: 16px;
+  font-weight: bold;
 }

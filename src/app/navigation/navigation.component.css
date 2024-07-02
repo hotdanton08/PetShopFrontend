@@ -1,0 +1,12 @@
+.navigation {
+  color: white;
+  background-color: #00A4A6;
+  padding: 10px 0;
+}
+
+.navigation mat-icon {
+  margin-bottom: 21px;
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}

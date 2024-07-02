@@ -1,79 +1,86 @@
 <div fxLayout="column" fxLayoutAlign="center stretch">
-  <!-- Top Bar -->
-  <div fxLayout="row" fxLayoutAlign="start center">
-    <mat-icon (click)="goToHome()">home</mat-icon>
-    <h1><strong>毛毛購物</strong></h1>
-    <h1><strong>|</strong></h1>
-    <h1><strong>購物車</strong></h1>
+  <div class="top-container">
+    <!-- Top Bar -->
+    <app-top-bar></app-top-bar>
+
+    <!-- Header -->
+    <app-header [headerName]="'SHOPPING_CART'"></app-header>
   </div>
 
-  <!-- Cart Table -->
-  <div>
-    <table mat-table [dataSource]="cartItems" class="mat-elevation-z8">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="80" class="cart-container">
+      <!-- Cart Table -->
+      <div>
+        <table mat-table [dataSource]="cartItems">
 
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="masterToggle()" [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()">
-          </mat-checkbox>
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)">
-          </mat-checkbox>
-        </td>
-      </ng-container>
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="masterToggle()" [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
 
-      <!-- Product Image and Name Column -->
-      <ng-container matColumnDef="product">
-        <th mat-header-cell *matHeaderCellDef> 商品 </th>
-        <td mat-cell *matCellDef="let element">
-          <img [src]="element.image" alt="Product" class="product-image">
-          <span>{{ element.name }}</span>
-        </td>
-      </ng-container>
+          <!-- Product Image and Name Column -->
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef>{{ 'PRODUCT' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <img [src]="element.image" alt="Product" class="product-image">
+              <span>{{ element.name }}</span>
+            </td>
+          </ng-container>
 
-      <!-- Price Column -->
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> 單價 </th>
-        <td mat-cell *matCellDef="let element"> {{ element.price | number:'1.0-0' }} </td>
-      </ng-container>
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'UNIT_PRICE' | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{ element.price | number:'1.0-0' }} </td>
+          </ng-container>
 
-      <!-- Quantity Column -->
-      <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> 數量 </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-mini-fab (click)="updateQuantity(element, -1)" [disabled]="element.quantity <= 1">-</button>
-          {{ element.quantity }}
-          <button mat-mini-fab (click)="updateQuantity(element, 1)">+</button>
-        </td>
-      </ng-container>
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>{{ 'QUANTITY' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-mini-fab (click)="updateQuantity(element, -1)" [disabled]="element.quantity <= 1">-</button>
+              {{ element.quantity }}
+              <button mat-mini-fab (click)="updateQuantity(element, 1)">+</button>
+            </td>
+          </ng-container>
 
-      <!-- Total Column -->
-      <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> 總計 </th>
-        <td mat-cell *matCellDef="let element"> {{ element.price * element.quantity | number:'1.0-0' }} </td>
-      </ng-container>
+          <!-- Total Column -->
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'TOTAL' | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{ element.price * element.quantity | number:'1.0-0' }} </td>
+          </ng-container>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> 操作 </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="removeFromCart(element)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>{{ 'ACTION' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="removeFromCart(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+      <!-- Cart Total Section -->
+      <mat-divider></mat-divider>
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="cart-total">
+        <span><strong>{{ 'TOTAL_AMOUNT' | translate }} ( {{ calculateNum() }} {{ 'ITEMS' | translate }} ) : $ {{ calculateTotal() }}</strong></span>
+        <button mat-raised-button (click)="checkout()" [disabled]="!selection.hasValue()">{{ 'CHECKOUT' | translate }}</button>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Cart Total Section -->
-  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="cart-total">
-    <span>總金額 ( {{ calculateNum() }} 個商品 ) : $ {{ calculateTotal() }}</span>
-    <button mat-raised-button (click)="checkout()" [disabled]="!selection.hasValue()">去買單</button>
-  </div>
 </div>

@@ -24,6 +24,8 @@
     "@coreui/angular": "^5.0.4",
     "@coreui/coreui": "^5.0.1",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "ng-lazyload-image": "^9.1.3",

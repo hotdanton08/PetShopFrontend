@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   months: number[] = [];
   years: number[] = [];
   showProfile = true; // 用於控制顯示的表單
+  selected = 'profile';
 
   constructor(private fb: FormBuilder) {
     this.userProfileForm = this.fb.group({
@@ -71,5 +72,6 @@ export class UserProfileComponent implements OnInit {
   // 切換顯示的表單
   toggleForm(showProfile: boolean) {
     this.showProfile = showProfile;
+    this.selected = showProfile ? 'profile' : 'password';
   }
 }
