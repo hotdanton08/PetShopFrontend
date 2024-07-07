@@ -12,9 +12,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -77,7 +78,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true // 表示可以有多個攔截器
+    }
   ],
   bootstrap: [AppComponent]
 })

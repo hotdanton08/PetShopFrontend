@@ -13,12 +13,12 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>密碼</mat-label>
-          <input matInput placeholder="輸入您的密碼" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" #passwordInput="ngModel">
+          <input matInput placeholder="輸入您的密碼" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required pattern="^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$" #passwordInput="ngModel">
           <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
           <mat-error *ngIf="passwordInput.errors?.['required'] && passwordInput.touched">請輸入密碼</mat-error>
-          <mat-error *ngIf="passwordInput.errors?.['pattern'] && passwordInput.touched">密碼需包含英文大小寫和數字</mat-error>
+          <mat-error *ngIf="passwordInput.errors?.['pattern'] && passwordInput.touched">密碼需包含英文字母和數字</mat-error>
         </mat-form-field>
         <button mat-raised-button class="login-button" color="primary" type="submit" [disabled]="!loginForm.valid">登入</button>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="10px">
