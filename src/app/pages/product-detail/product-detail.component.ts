@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
   images: string[] = [
@@ -12,27 +12,27 @@ export class ProductDetailComponent implements OnInit {
     'https://picsum.photos/500/300?random=2',
     'https://picsum.photos/500/300?random=3',
     'https://picsum.photos/500/300?random=4',
-    'https://picsum.photos/500/300?random=5'
+    'https://picsum.photos/500/300?random=5',
   ];
   selectedImage: string;
   soldCount: number = 50;
   price: number = 1500;
   productOptions = [
     { name: 'Option 1', stock: 10 },
-    { name: 'Option 2', stock: 0 },  // Sold out
-    { name: 'Option 3', stock: 5 }
+    { name: 'Option 2', stock: 0 }, // Sold out
+    { name: 'Option 3', stock: 5 },
   ];
   selectedOption = this.productOptions[0];
   isLoggedIn: boolean = false; // This should be dynamically checked
-  description: string = '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述';
+  description: string =
+    '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述';
   quantity: number = 1;
 
   constructor(private router: Router) {
     this.selectedImage = this.images[0];
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   selectImage(img: string) {
     this.selectedImage = img;

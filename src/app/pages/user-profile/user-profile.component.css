@@ -1,5 +1,5 @@
 .top-container {
-  background-color: #00A4A6;
+  background-color: #00a4a6;
 }
 
 .mat-sidenav {
@@ -26,7 +26,7 @@
 
 .sidenav-container {
   margin: 20px 0;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .sidenav-container mat-icon {
@@ -39,9 +39,9 @@
 }
 
 .selected span {
-  color: #00A4A6;
+  color: #00a4a6;
 }
 
 .selected mat-icon {
-  color: #00A4A6;
+  color: #00a4a6;
 }

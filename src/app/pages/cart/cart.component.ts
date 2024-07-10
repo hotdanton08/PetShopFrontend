@@ -14,17 +14,42 @@ interface CartItem {
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'product', 'price', 'quantity', 'total', 'actions'];
+  displayedColumns: string[] = [
+    'select',
+    'product',
+    'price',
+    'quantity',
+    'total',
+    'actions',
+  ];
   dataSource = new MatTableDataSource<CartItem>();
   selection = new SelectionModel<CartItem>(true, []);
 
   cartItems: CartItem[] = [
-    { id: 1, name: '產品一', price: 100, quantity: 1, image: 'https://picsum.photos/150/150?random=1' },
-    { id: 2, name: '產品二', price: 200, quantity: 2, image: 'https://picsum.photos/150/150?random=2' },
-    { id: 3, name: '產品三', price: 300, quantity: 3, image: 'https://picsum.photos/150/150?random=3' }
+    {
+      id: 1,
+      name: '產品一',
+      price: 100,
+      quantity: 1,
+      image: 'https://picsum.photos/150/150?random=1',
+    },
+    {
+      id: 2,
+      name: '產品二',
+      price: 200,
+      quantity: 2,
+      image: 'https://picsum.photos/150/150?random=2',
+    },
+    {
+      id: 3,
+      name: '產品三',
+      price: 300,
+      quantity: 3,
+      image: 'https://picsum.photos/150/150?random=3',
+    },
   ];
 
   constructor(private router: Router) {}
@@ -40,13 +65,13 @@ export class CartComponent implements OnInit {
   }
 
   masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
   }
 
   updateQuantity(item: CartItem, change: number) {
-    const index = this.cartItems.findIndex(x => x.id === item.id);
+    const index = this.cartItems.findIndex((x) => x.id === item.id);
     if (index > -1) {
       this.cartItems[index].quantity += change;
       if (this.cartItems[index].quantity < 1) {
@@ -57,17 +82,23 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(item: CartItem) {
-    this.dataSource.data = this.dataSource.data.filter(i => i.id !== item.id);
+    this.dataSource.data = this.dataSource.data.filter((i) => i.id !== item.id);
     this.selection.deselect(item);
     // Optionally trigger a backend delete here using DELETE /cart/{id}
   }
 
   calculateNum() {
-    return this.selection.selected.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
+    return this.selection.selected.reduce(
+      (acc, curr) => acc + curr.price * curr.quantity,
+      0,
+    );
   }
 
   calculateTotal() {
-    return this.selection.selected.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
+    return this.selection.selected.reduce(
+      (acc, curr) => acc + curr.price * curr.quantity,
+      0,
+    );
   }
 
   checkout() {

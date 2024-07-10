@@ -1,6 +1,6 @@
 .login-container {
   height: 100vh;
-  background-color: #00A4A6;
+  background-color: #00a4a6;
 }
 
 mat-card {
@@ -13,6 +13,8 @@ mat-form-field {
   width: 100%;
 }
 
-.login-button, .forgot-password, .register-button {
+.login-button,
+.forgot-password,
+.register-button {
   width: 100%;
 }

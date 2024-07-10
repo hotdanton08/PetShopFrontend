@@ -7,50 +7,81 @@
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center">
-  <div class="main-container" fxLayout="column"  fxFlex="80">
-    <mat-card fxLayout="row" fxLayoutAlign="end start" class="images-Info-container" fxLayoutGap="50px">
+  <div class="main-container" fxLayout="column" fxFlex="80">
+    <mat-card
+      fxLayout="row"
+      fxLayoutAlign="end start"
+      class="images-Info-container"
+      fxLayoutGap="50px"
+    >
       <!-- Left: Product Images -->
       <div fxFlex="50">
-        <img [src]="selectedImage" alt="Product Image" class="main-image">
+        <img [src]="selectedImage" alt="Product Image" class="main-image" />
         <div fxLayout="row" class="thumbnails">
-          <img fxFlex="20" *ngFor="let img of images; let i = index" [src]="img"
-                [class.selected]="selectedImage === img"
-                (click)="selectImage(img)" class="thumb-image">
+          <img
+            fxFlex="20"
+            *ngFor="let img of images; let i = index"
+            [src]="img"
+            [class.selected]="selectedImage === img"
+            (click)="selectImage(img)"
+            class="thumb-image"
+          />
         </div>
       </div>
 
       <!-- Right: Product Info -->
       <div>
-        <h1>【MLM】華夫格 短袖t恤 男 夏季 韓版 潮流 休閑 簡約百搭 寬松 ins情侶 五分袖 半袖 短袖T恤青少年短袖上衣</h1>
-        <h3 class="sold-count">{{ 'PRODUCT_SOLD' | translate:{soldCount: soldCount} }}</h3>
+        <h1>
+          【MLM】華夫格 短袖t恤 男 夏季 韓版 潮流 休閑 簡約百搭 寬松 ins情侶
+          五分袖 半袖 短袖T恤青少年短袖上衣
+        </h1>
+        <h3 class="sold-count">
+          {{ "PRODUCT_SOLD" | translate: { soldCount: soldCount } }}
+        </h3>
         <div class="price-container">
           <h3 class="price">$ {{ price }}</h3>
         </div>
         <div fxLayout="row">
           <div *ngFor="let option of productOptions" class="option-button">
-            <button mat-raised-button
+            <button
+              mat-raised-button
               [ngStyle]="{
                 'background-color': selectedOption === option ? '#00A4A6' : '',
-                'color': selectedOption === option ? 'white' : ''
+                color: selectedOption === option ? 'white' : '',
               }"
-              (click)="selectOption(option)">
+              (click)="selectOption(option)"
+            >
               {{ option.name | translate }}
             </button>
           </div>
         </div>
         <div class="quantity-container" fxLayoutAlign="center center">
-          <button mat-mini-fab class="quantity-button" (click)="decreaseQuantity()">-</button>
+          <button
+            mat-mini-fab
+            class="quantity-button"
+            (click)="decreaseQuantity()"
+          >
+            -
+          </button>
           <span>{{ quantity }}</span>
-          <button mat-mini-fab class="quantity-button" (click)="increaseQuantity()">+</button>
+          <button
+            mat-mini-fab
+            class="quantity-button"
+            (click)="increaseQuantity()"
+          >
+            +
+          </button>
         </div>
-        <button mat-button class="add-to-cart">{{ 'ADD_TO_CART' | translate }}</button>
+        <button mat-button class="add-to-cart">
+          {{ "ADD_TO_CART" | translate }}
+        </button>
       </div>
     </mat-card>
 
     <!-- Below: Product description -->
     <div fxLayout="column" class="product-description">
-      <mat-card style="padding: 30px;">
-        <h2>{{ 'PRODUCT_DESCRIPTION' | translate }}</h2>
+      <mat-card style="padding: 30px">
+        <h2>{{ "PRODUCT_DESCRIPTION" | translate }}</h2>
         <p>{{ description }}</p>
       </mat-card>
     </div>

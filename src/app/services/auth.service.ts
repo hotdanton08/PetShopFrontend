@@ -7,22 +7,27 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root' // 這表示這個服務可以在整個應用中使用
+  providedIn: 'root', // 這表示這個服務可以在整個應用中使用
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000'; // 替換為你的後端 URL
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
   // 登錄方法，返回一個 Observable
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users/login`, { email, password }).pipe(
-      tap((response: any) => {
-        if (response.token) {
-          localStorage.setItem('token', response.token); // 保存 token 到本地存儲
-        }
-      })
-    );
+    return this.http
+      .post(`${this.apiUrl}/users/login`, { email, password })
+      .pipe(
+        tap((response: any) => {
+          if (response.token) {
+            localStorage.setItem('token', response.token); // 保存 token 到本地存儲
+          }
+        }),
+      );
   }
 
   // 登出方法

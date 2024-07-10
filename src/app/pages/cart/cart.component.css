@@ -1,12 +1,12 @@
 .top-container {
-  background-color: #00A4A6;
+  background-color: #00a4a6;
 }
 
 .cart-container {
   background-color: white;
   margin: 20px 0;
   padding: 20px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 table th {
@@ -53,7 +53,7 @@ table th {
 
 mat-divider {
   margin-top: 30px;
-  border-top-width: 3px;      /* 更改分隔線厚度 */
+  border-top-width: 3px; /* 更改分隔線厚度 */
 }
 
 .cart-total {

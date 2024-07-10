@@ -4,7 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarouselComponent, CarouselInnerComponent, CarouselItemComponent, ThemeDirective, CarouselIndicatorsComponent, CarouselCaptionComponent, CarouselControlComponent } from '@coreui/angular';
+import {
+  CarouselComponent,
+  CarouselInnerComponent,
+  CarouselItemComponent,
+  ThemeDirective,
+  CarouselIndicatorsComponent,
+  CarouselCaptionComponent,
+  CarouselControlComponent,
+} from '@coreui/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterLink } from '@angular/router';
 import { MaterialModule } from './material.module';
@@ -12,8 +20,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
@@ -73,18 +89,18 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true // 表示可以有多個攔截器
-    }
+      multi: true, // 表示可以有多個攔截器
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

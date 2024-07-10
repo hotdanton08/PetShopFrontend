@@ -1,9 +1,10 @@
 .main-container {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 /* 調整不同斷點下的寬度 */
-@media (min-width: 960px) { /* 符合 gt-sm 斷點*/
+@media (min-width: 960px) {
+  /* 符合 gt-sm 斷點*/
   .banner img {
     max-height: 300px; /* 在較小的裝置上減少高度 */
   }
@@ -19,22 +20,22 @@
   position: fixed;
   width: 100%;
   top: 0;
-  left: 50%;  /* 將元素的左邊界定位到視窗的中央 */
-  transform: translateX(-50%);  /* 使用 transform 將元素水平居中 */
+  left: 50%; /* 將元素的左邊界定位到視窗的中央 */
+  transform: translateX(-50%); /* 使用 transform 將元素水平居中 */
   z-index: 2;
-  background-color: #00A4A6;
+  background-color: #00a4a6;
 }
 
 .nofixed {
   position: static;
-  background-color: #00A4A6;
+  background-color: #00a4a6;
 }
 
 .navigation mat-icon {
-  margin-bottom: 15px;  /* 增加底部邊距以讓圖標與搜索欄的底部對齊，這是因為搜索欄的 material 造成其下方有額外的空間 */
-  font-size: 50px;  /* 圖的大小 */
-  height: 50px ;  /* 圖的邊框大小 */
-  width: 50px;  /* 圖的邊框大小 */
+  margin-bottom: 15px; /* 增加底部邊距以讓圖標與搜索欄的底部對齊，這是因為搜索欄的 material 造成其下方有額外的空間 */
+  font-size: 50px; /* 圖的大小 */
+  height: 50px; /* 圖的邊框大小 */
+  width: 50px; /* 圖的邊框大小 */
 }
 
 .banner img {
@@ -80,14 +81,16 @@ mat-progress-spinner {
 }
 
 .mat-grid-tile {
-  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+  transition:
+    box-shadow 0.3s ease-in-out,
+    border-color 0.3s ease;
   border: 1px solid transparent;
   cursor: pointer;
 }
 
 .mat-grid-tile:hover {
-  box-shadow: 0 10px 6px rgba(0,0,0,0.2);
-  border-color: #00A4A6;
+  box-shadow: 0 10px 6px rgba(0, 0, 0, 0.2);
+  border-color: #00a4a6;
 }
 
 .product-item {
@@ -111,7 +114,7 @@ mat-progress-spinner {
 }
 
 .product-price {
-  color: #00A4A6;
+  color: #00a4a6;
   height: 30px;
 }
 

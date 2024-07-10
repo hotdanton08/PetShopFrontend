@@ -5,14 +5,17 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   email!: string;
   password!: string;
   hide = true;
 
-  constructor(private router: Router, private authService: AuthService,) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {}
 
   login() {
     if (this.email && this.password) {
@@ -25,7 +28,7 @@ export class LoginComponent {
         error: (err) => {
           console.error('Login failed:', err);
           // 處理登錄失敗邏輯
-        }
+        },
       });
     }
   }

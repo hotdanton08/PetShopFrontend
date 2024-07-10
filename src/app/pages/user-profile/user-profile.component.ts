@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
   userProfileForm: FormGroup;
@@ -19,19 +19,22 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.userProfileForm = this.fb.group({
-      email: [{ value: this.email, disabled: true }, [Validators.required, Validators.email]],
+      email: [
+        { value: this.email, disabled: true },
+        [Validators.required, Validators.email],
+      ],
       name: [''],
       gender: [''],
       day: [''],
       month: [''],
       year: [''],
       password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
     });
 
     this.changePasswordForm = this.fb.group({
       password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
     });
 
     // 初始化日期選項
@@ -41,14 +44,16 @@ export class UserProfileComponent implements OnInit {
     this.years = Array.from({ length: 100 }, (_, i) => currentYear - i);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     if (this.userProfileForm.valid) {
-      const { email, name, gender, day, month, year, password } = this.userProfileForm.value;
+      const { email, name, gender, day, month, year, password } =
+        this.userProfileForm.value;
       // 假設我們會使用這些數據進行API調用
-      console.log(`Email: ${email}, Name: ${name}, Gender: ${gender}, Birthday: ${year}-${month}-${day}, Password: ${password}`);
+      console.log(
+        `Email: ${email}, Name: ${name}, Gender: ${gender}, Birthday: ${year}-${month}-${day}, Password: ${password}`,
+      );
     }
   }
 
@@ -56,17 +61,25 @@ export class UserProfileComponent implements OnInit {
     if (this.changePasswordForm.valid) {
       const { password, confirmPassword } = this.changePasswordForm.value;
       // 假設我們會使用這些數據進行API調用
-      console.log(`Password: ${password}, Confirm Password: ${confirmPassword}`);
+      console.log(
+        `Password: ${password}, Confirm Password: ${confirmPassword}`,
+      );
     }
   }
 
   // 驗證密碼是否匹配
   get passwordsMatch() {
-    return this.userProfileForm.get('password')?.value === this.userProfileForm.get('confirmPassword')?.value;
+    return (
+      this.userProfileForm.get('password')?.value ===
+      this.userProfileForm.get('confirmPassword')?.value
+    );
   }
 
   get changePasswordMatch() {
-    return this.changePasswordForm.get('password')?.value === this.changePasswordForm.get('confirmPassword')?.value;
+    return (
+      this.changePasswordForm.get('password')?.value ===
+      this.changePasswordForm.get('confirmPassword')?.value
+    );
   }
 
   // 切換顯示的表單

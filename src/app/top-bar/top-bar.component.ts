@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrl: './top-bar.component.css'
+  styleUrl: './top-bar.component.css',
 })
 export class TopBarComponent {
   selectedLanguage = 'zh-TW';

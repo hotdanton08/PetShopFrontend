@@ -1,13 +1,13 @@
 .top-container {
-  background-color: #00A4A6;
+  background-color: #00a4a6;
 }
 
 .main-container {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 body {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .main-image {
@@ -25,7 +25,8 @@ body {
   padding: 5px;
 }
 
-.thumb-image.selected, .thumb-image:hover {
+.thumb-image.selected,
+.thumb-image:hover {
   opacity: 1;
 }
 
@@ -43,12 +44,12 @@ body {
 }
 
 .price-container {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 15px;
 }
 
 .price {
-  color: #00A4A6;
+  color: #00a4a6;
 }
 
 .option-button {
@@ -69,14 +70,14 @@ body {
 }
 
 .quantity-button {
-  background-color: #00A4A6;
+  background-color: #00a4a6;
   margin: 20px;
   font-size: 20px;
 }
 
 .add-to-cart {
   width: 100%;
-  background-color: #00A4A6;
+  background-color: #00a4a6;
   color: white !important;
   font-size: 20px;
   font-weight: bold;
