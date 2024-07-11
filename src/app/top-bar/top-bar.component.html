@@ -17,7 +17,14 @@
       <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
       <button mat-menu-item (click)="changeLanguage('en')">English</button>
     </mat-menu>
-    <button mat-button href="/register">{{ "REGISTER" | translate }}</button>
-    <button mat-button href="/login">{{ "LOGIN" | translate }}</button>
+    <ng-container *ngIf="user; else guest">
+      <span>{{ user.email }}</span>
+    </ng-container>
+    <ng-template #guest>
+      <button mat-button href="/register">{{ "REGISTER" | translate }}</button>
+      <button mat-button (click)="goToLogin()">
+        {{ "LOGIN" | translate }}
+      </button>
+    </ng-template>
   </div>
 </div>

@@ -12,10 +12,7 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'http://localhost:3000'; // 替換為你的後端 URL
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   // 登錄方法，返回一個 Observable
   login(email: string, password: string): Observable<any> {
@@ -23,10 +20,10 @@ export class AuthService {
       .post(`${this.apiUrl}/users/login`, { email, password })
       .pipe(
         tap((response: any) => {
-          if (response.token) {
-            localStorage.setItem('token', response.token); // 保存 token 到本地存儲
+          if (response.data && response.data.token) {
+            localStorage.setItem('token', response.data.token); // 保存 token 到本地存儲
           }
-        }),
+        })
       );
   }
 
@@ -39,6 +36,26 @@ export class AuthService {
   // 獲取 token 方法
   getToken(): string | null {
     return localStorage.getItem('token'); // 從本地存儲中獲取 token
+  }
+
+  // 獲取角色方法
+  getRole(): string {
+    const token = this.getToken();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.role || '';
+    }
+    return '';
+  }
+
+  // 從 token 中解析用戶信息
+  getUserFromToken(): any {
+    const token = this.getToken();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload;
+    }
+    return null;
   }
 
   // 判斷是否已認證
