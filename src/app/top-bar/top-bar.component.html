@@ -18,7 +18,14 @@
       <button mat-menu-item (click)="changeLanguage('en')">English</button>
     </mat-menu>
     <ng-container *ngIf="user; else guest">
-      <span>{{ user.email }}</span>
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        {{ user.email }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="goToProfile()">個人資料</button>
+        <button mat-menu-item (click)="logout()">登出</button>
+      </mat-menu>
     </ng-container>
     <ng-template #guest>
       <button mat-button href="/register">{{ "REGISTER" | translate }}</button>

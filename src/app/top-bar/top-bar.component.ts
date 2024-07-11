@@ -38,4 +38,8 @@ export class TopBarComponent {
   goToLogin() {
     this.router.navigate(['/login']);
   }
+
+  goToProfile() {
+    this.router.navigate(['/user-profile']);
+  }
 }
