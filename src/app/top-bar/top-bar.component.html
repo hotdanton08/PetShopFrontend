@@ -17,16 +17,18 @@
       <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
       <button mat-menu-item (click)="changeLanguage('en')">English</button>
     </mat-menu>
-    <ng-container *ngIf="user; else guest">
-      <button mat-button [matMenuTriggerFor]="userMenu">
-        {{ user.email }}
+
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <span class="language-button">
+        <span>{{ user.email }}</span>
         <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item (click)="goToProfile()">個人資料</button>
-        <button mat-menu-item (click)="logout()">登出</button>
-      </mat-menu>
-    </ng-container>
+      </span>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="goToProfile()">個人資料</button>
+      <button mat-menu-item (click)="logout()">登出</button>
+    </mat-menu>
+
     <ng-template #guest>
       <button mat-button href="/register">{{ "REGISTER" | translate }}</button>
       <button mat-button (click)="goToLogin()">
