@@ -42,5 +42,6 @@
   "SHOPPING_SECURITY_AND_OTHERS": "Shopping Security and Others",
   "PAYMENT_OR_ACCOUNT_ISSUES": "Payment or Account Issues",
   "PROMOTIONS_AND_CAMPAIGNS": "Promotions and Campaigns",
-  "E_TICKETS_AND_PAYMENTS": "E-tickets and Payments"
+  "E_TICKETS_AND_PAYMENTS": "E-tickets and Payments",
+  "LOGOUT": "Logout"
 }

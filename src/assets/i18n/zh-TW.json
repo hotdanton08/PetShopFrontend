@@ -42,5 +42,6 @@
   "SHOPPING_SECURITY_AND_OTHERS": "購物安全與其他",
   "PAYMENT_OR_ACCOUNT_ISSUES": "付款或帳務問題",
   "PROMOTIONS_AND_CAMPAIGNS": "優惠與促銷活動",
-  "E_TICKETS_AND_PAYMENTS": "電子票券與繳費"
+  "E_TICKETS_AND_PAYMENTS": "電子票券與繳費",
+  "LOGOUT": "登出"
 }
