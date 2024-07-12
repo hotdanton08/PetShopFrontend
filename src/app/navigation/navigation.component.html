@@ -8,8 +8,8 @@
     class="navigation"
   >
     <div fxLayout="row" fxLayoutGap="10px">
-      <mat-icon>home</mat-icon>
-      <h1>
+      <mat-icon class="clickable-icon" (click)="goToHome()">home</mat-icon>
+      <h1 class="clickable-icon" (click)="goToHome()">
         <strong>{{ "WEBSITE_NAME" | translate }}</strong>
       </h1>
     </div>
@@ -20,7 +20,11 @@
         [(ngModel)]="searchQuery"
       />
     </mat-form-field>
-    <mat-icon fxFlex="10" fxLayoutAlign="center center" (click)="goToCart()"
+    <mat-icon
+      fxFlex="10"
+      fxLayoutAlign="center center"
+      (click)="goToCart()"
+      class="clickable-icon"
       >shopping_cart</mat-icon
     >
   </div>

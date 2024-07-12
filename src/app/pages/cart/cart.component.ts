@@ -90,20 +90,21 @@ export class CartComponent implements OnInit {
   calculateNum() {
     return this.selection.selected.reduce(
       (acc, curr) => acc + curr.price * curr.quantity,
-      0,
+      0
     );
   }
 
   calculateTotal() {
     return this.selection.selected.reduce(
       (acc, curr) => acc + curr.price * curr.quantity,
-      0,
+      0
     );
   }
 
   checkout() {
     // Here you could navigate to a checkout page
     console.log('Going to checkout', this.selection.selected);
+    this.router.navigate(['/checkout']);
   }
 
   goToHome() {

@@ -35,6 +35,10 @@ export class TopBarComponent {
     this.user = null;
   }
 
+  goToFaq() {
+    this.router.navigate(['/faq']);
+  }
+
   goToLogin() {
     this.router.navigate(['/login']);
   }

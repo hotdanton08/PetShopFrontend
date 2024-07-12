@@ -11,6 +11,10 @@ export class NavigationComponent {
 
   constructor(private router: Router) {}
 
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+
   goToCart() {
     this.router.navigate(['/cart']);
   }

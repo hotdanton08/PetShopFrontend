@@ -6,7 +6,9 @@
     fxFlex="100"
     fxFlex.gt-sm="80"
   >
-    <button mat-button href="/help">{{ "HELP_CENTER" | translate }}</button>
+    <button mat-button (click)="goToFaq()">
+      {{ "HELP_CENTER" | translate }}
+    </button>
 
     <button mat-button [matMenuTriggerFor]="languageMenu">
       <span class="language-button">

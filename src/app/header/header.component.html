@@ -7,8 +7,8 @@
     fxLayoutGap="10px"
     class="cart-header"
   >
-    <mat-icon>home</mat-icon>
-    <h1>
+    <mat-icon class="clickable-icon" (click)="goToHome()">home</mat-icon>
+    <h1 class="clickable-icon" (click)="goToHome()">
       <strong>{{ "WEBSITE_NAME" | translate }}</strong>
     </h1>
     <h1><strong>|</strong></h1>
