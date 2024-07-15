@@ -32,6 +32,10 @@ import {
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { IconModule } from '@coreui/icons-angular';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -92,6 +96,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    IconModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     provideAnimationsAsync(),
