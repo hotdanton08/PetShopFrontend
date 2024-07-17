@@ -5,8 +5,6 @@
 
 mat-card {
   width: 300px;
-  margin-top: -100px;
-  background: rgba(255, 255, 255, 0.8); /* 為卡片添加半透明白色背景 */
 }
 
 mat-form-field {
