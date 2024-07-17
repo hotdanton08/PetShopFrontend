@@ -5,21 +5,15 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
-import { AppState } from '../store';
-import { loginSuccess, logout } from '../store/actions/auth.actions';
-
+import { SimpleStore } from '../store/simple-store';
 @Injectable({
   providedIn: 'root', // 這表示這個服務可以在整個應用中使用
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000'; // 替換為你的後端 URL
+  private authStore = new SimpleStore<{ user: any }>({ user: null }); // 使用 SimpleStore 來管理認證狀態
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private store: Store<AppState>
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   // 登錄方法，返回一個 Observable
   login(email: string, password: string): Observable<any> {
@@ -30,7 +24,7 @@ export class AuthService {
           if (response.data.token) {
             localStorage.setItem('token', response.data.token); // 保存 token 到本地存儲
             const payload = JSON.parse(atob(response.data.token.split('.')[1]));
-            this.store.dispatch(loginSuccess({ user: payload }));
+            this.authStore.setState({ user: payload }); // 設置用戶狀態
           }
         })
       );
@@ -39,7 +33,7 @@ export class AuthService {
   // 登出方法
   logout() {
     localStorage.removeItem('token'); // 移除本地存儲中的 token
-    this.store.dispatch(logout()); // 觸發登出動作
+    this.authStore.setState({ user: null }); // 清除用戶狀態
     this.router.navigate(['/login']); // 導航到登錄頁面
   }
 
@@ -61,5 +55,10 @@ export class AuthService {
   // 判斷是否已認證
   isAuthenticated(): boolean {
     return !!this.getToken(); // 判斷是否有 token
+  }
+
+  // 獲取用戶方法，返回 Observable
+  getUser(): Observable<any> {
+    return this.authStore.select('user');
   }
 }

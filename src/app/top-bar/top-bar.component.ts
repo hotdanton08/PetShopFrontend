@@ -1,9 +1,9 @@
+// src/app/top-bar/top-bar.component.ts
+
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '../store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,15 +18,15 @@ export class TopBarComponent {
   constructor(
     private translate: TranslateService,
     private authService: AuthService,
-    private router: Router,
-    private store: Store<AppState>
+    private router: Router
   ) {
     // 設置默認語言
     this.translate.setDefaultLang('zh-TW');
     this.translate.use(this.selectedLanguage);
 
-    // 檢查用戶是否已登錄
-    this.user$ = this.store.select((state) => state.auth.user);
+    // 檢查用戶是否已登錄，並訂閱用戶狀態
+    this.user$ = this.authService.getUser();
+    console.log('this.user => ', this.user$);
   }
 
   changeLanguage(lang: string) {
