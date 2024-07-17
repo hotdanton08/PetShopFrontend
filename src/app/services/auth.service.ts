@@ -13,7 +13,13 @@ export class AuthService {
   private apiUrl = 'http://localhost:3000'; // 替換為你的後端 URL
   private authStore = new SimpleStore<{ user: any }>({ user: null }); // 使用 SimpleStore 來管理認證狀態
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      this.authStore.setState({ user: payload });
+    }
+  }
 
   // 登錄方法，返回一個 Observable
   login(email: string, password: string): Observable<any> {
