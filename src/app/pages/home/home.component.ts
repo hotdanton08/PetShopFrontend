@@ -54,14 +54,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private breakpointObserver: BreakpointObserver,
-    private productService: ProductService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
+    this.productService.getProducts().subscribe((response) => {
+      this.products = response.data;
       this.productImageLoaded = new Array(this.products.length).fill(false);
-      console.log('data => ', this.products);
     });
 
     this.preloadImages();

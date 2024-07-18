@@ -26,7 +26,6 @@ export class TopBarComponent {
 
     // 檢查用戶是否已登錄，並訂閱用戶狀態
     this.user$ = this.authService.getUser();
-    console.log('this.user => ', this.user$);
   }
 
   changeLanguage(lang: string) {
