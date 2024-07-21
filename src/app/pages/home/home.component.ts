@@ -60,6 +60,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((response) => {
       this.products = response.data;
+
+      // 修改圖片路徑
+      this.products.forEach((product) => {
+        product.image = `http://localhost:3000/images/${product.image}`;
+      });
+
       this.productImageLoaded = new Array(this.products.length).fill(false);
     });
 
