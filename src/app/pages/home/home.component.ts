@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
+import { environment } from '../../../environments/environment';
 
 interface Product {
   name: string;
@@ -60,17 +61,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((response) => {
       this.products = response.data;
-
       // 修改圖片路徑
       this.products.forEach((product) => {
-        product.image = `http://localhost:3000/images/${product.image}`;
+        product.image = `${environment.backendUrl}/images/${product.image}`;
       });
-
       this.productImageLoaded = new Array(this.products.length).fill(false);
     });
 
     this.preloadImages();
-    //this.loadProducts();
     this.setupGridCols();
   }
 
