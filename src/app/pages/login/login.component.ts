@@ -1,22 +1,35 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   email!: string;
   password!: string;
   hide = true;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {}
 
   login() {
     if (this.email && this.password) {
-      console.log('Login data:', { email: this.email, password: this.password });
-      // 模擬 API 請求處理登入
+      // 調用 AuthService 的 login 方法
+      this.authService.login(this.email, this.password).subscribe({
+        next: (response) => {
+          console.log('Login successful');
+          this.router.navigate(['/home']); // 登錄成功後導航到首頁或其他頁面
+        },
+        error: (err) => {
+          console.error('Login failed:', err);
+          // 處理登錄失敗邏輯
+        },
+      });
     }
   }
 

@@ -1,0 +1,128 @@
+<div class="top-container">
+  <!-- Top Bar -->
+  <app-top-bar></app-top-bar>
+
+  <!-- User Profile Header -->
+  <app-header [headerName]="'USER_CENTER'"></app-header>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-sidenav-container class="sidenav-container" fxFlex="50">
+    <!-- 左側選單 -->
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list>
+        <mat-list-item
+          (click)="toggleForm(true)"
+          [ngClass]="{ selected: selected === 'profile' }"
+        >
+          <mat-icon matListIcon>person</mat-icon>
+          <span matLine>{{ "USER_PROFILE" | translate }}</span>
+        </mat-list-item>
+        <mat-list-item
+          (click)="toggleForm(false)"
+          [ngClass]="{ selected: selected === 'password' }"
+        >
+          <mat-icon matListIcon>lock</mat-icon>
+          <span matLine>{{ "CHANGE_PASSWORD" | translate }}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- 主要內容 -->
+    <mat-sidenav-content class="user-profile-container">
+      <div fxLayout="column">
+        <mat-card class="user-profile-card" *ngIf="showProfile">
+          <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ "EMAIL" | translate }}</mat-label>
+              <input matInput formControlName="email" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ "NAME" | translate }}</mat-label>
+              <input matInput formControlName="name" />
+            </mat-form-field>
+            <mat-radio-group formControlName="gender">
+              <mat-radio-button
+                *ngFor="let gender of genders"
+                [value]="gender"
+                >{{ gender }}</mat-radio-button
+              >
+            </mat-radio-group>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ "BIRTHDAY" | translate }}</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="birthdate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!userProfileForm.valid"
+            >
+              {{ "SAVE" | translate }}
+            </button>
+          </form>
+        </mat-card>
+
+        <mat-card class="user-profile-card" *ngIf="!showProfile">
+          <form
+            [formGroup]="changePasswordForm"
+            (ngSubmit)="onChangePasswordSubmit()"
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>{{ "PASSWORD" | translate }}</mat-label>
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                required
+              />
+              <mat-error
+                *ngIf="changePasswordForm.get('password')?.hasError('required')"
+              >
+                {{ "ENTER_PASSWORD" | translate }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ "CONFIRM_PASSWORD" | translate }}</mat-label>
+              <input
+                matInput
+                type="password"
+                formControlName="confirmPassword"
+                required
+              />
+              <mat-error *ngIf="!changePasswordMatch">
+                {{ "PASSWORD_MISMATCH" | translate }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  changePasswordForm
+                    .get('confirmPassword')
+                    ?.hasError('required')
+                "
+              >
+                {{ "ENTER_CONFIRM_PASSWORD" | translate }}
+              </mat-error>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!changePasswordForm.valid || !changePasswordMatch"
+            >
+              {{ "SAVE" | translate }}
+            </button>
+          </form>
+        </mat-card>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

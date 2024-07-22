@@ -1,0 +1,39 @@
+<div class="top-container">
+  <!-- Top Bar -->
+  <app-top-bar></app-top-bar>
+
+  <!-- Faq Header -->
+  <app-header [headerName]="'HELP_CENTER'"></app-header>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="faq-container" fxFlex="80">
+    <mat-tab-group
+      animationDuration="0ms"
+      (selectedIndexChange)="selectTab($event)"
+    >
+      <mat-tab label="{{ 'ALL_QUESTIONS' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'BEGINNERS' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'ORDERS_AND_LOGISTICS' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'RETURNS_AND_REFUNDS' | translate }}"></mat-tab>
+      <mat-tab
+        label="{{ 'SHOPPING_SECURITY_AND_OTHERS' | translate }}"
+      ></mat-tab>
+      <mat-tab label="{{ 'PAYMENT_OR_ACCOUNT_ISSUES' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'PROMOTIONS_AND_CAMPAIGNS' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'E_TICKETS_AND_PAYMENTS' | translate }}"></mat-tab>
+    </mat-tab-group>
+
+    <h2 style="margin-top: 20px">{{ currentCategory }}</h2>
+    <mat-accordion class="faq-accordion" multi="true">
+      <mat-expansion-panel *ngFor="let faq of filteredFaqs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ faq.question }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ faq.answer }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+.top-container {
+  background-color: #00a4a6;
+}
+
+.mat-sidenav {
+  margin: 10px;
+}
+
+.user-profile-container {
+  background-color: white;
+}
+
+.user-profile-card {
+  padding: 20px;
+  height: 400px;
+}
+
+.user-profile-card mat-form-field {
+  width: 100%;
+  margin: 5px;
+}
+
+.user-profile-card button {
+  margin: 5px;
+}
+
+.sidenav-container {
+  margin: 20px 0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-container mat-icon {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.sidenav-container span {
+  margin-right: 20px;
+}
+
+.selected span {
+  color: #00a4a6;
+}
+
+.selected mat-icon {
+  color: #00a4a6;
+}

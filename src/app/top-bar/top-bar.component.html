@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div
+    class="top-bar"
+    fxLayout="row"
+    fxLayoutAlign="end center"
+    fxFlex="100"
+    fxFlex.gt-sm="80"
+  >
+    <button mat-button (click)="goToFaq()">
+      {{ "HELP_CENTER" | translate }}
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="languageMenu">
+      <span class="language-button">
+        <span>{{ "LANGUAGE" | translate }}</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </span>
+    </button>
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item (click)="changeLanguage('zh-TW')">繁體中文</button>
+      <button mat-menu-item (click)="changeLanguage('en')">English</button>
+    </mat-menu>
+
+    <ng-container *ngIf="user$ | async as user; else guest">
+      <span [matMenuTriggerFor]="userMenu" class="language-button">
+        {{ user.email }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </span>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="goToProfile()">個人資料</button>
+        <button mat-menu-item (click)="logout()">登出</button>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #guest>
+      <button mat-button href="/register">{{ "REGISTER" | translate }}</button>
+      <button mat-button (click)="goToLogin()">
+        {{ "LOGIN" | translate }}
+      </button>
+    </ng-template>
+  </div>
+</div>
