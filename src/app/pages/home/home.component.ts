@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { environment } from '../../../environments/environment';
+import { PageEvent } from '@angular/material/paginator';
 
 interface Product {
   name: string;
@@ -52,6 +53,11 @@ export class HomeComponent implements OnInit {
   productsTest: any[] = [];
   productImageLoadedTest!: boolean[];
 
+  // 分頁相關屬性
+  length = 0; // 總記錄數
+  pageSize = 10; // 每頁顯示的記錄數
+  pageSizeOptions: number[] = [10, 20, 50]; // 分頁選項
+
   constructor(
     private router: Router,
     private breakpointObserver: BreakpointObserver,
@@ -94,15 +100,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  loadProducts() {
-    this.productService.getProducts().subscribe((response) => {
-      this.products = response.data;
-      // 修改圖片路徑
-      this.products.forEach((product) => {
-        product.image = `${environment.backendUrl}/images/${product.image}`;
+  loadProducts(pageIndex: number = 0, pageSize: number = this.pageSize) {
+    // 從服務器獲取產品數據，支援分頁
+    this.productService
+      .getProducts(pageIndex + 1, pageSize)
+      .subscribe((response) => {
+        this.products = response.data;
+        this.length = response.total;
+        // 修改圖片路徑
+        this.products.forEach((product) => {
+          product.image = `${environment.backendUrl}/images/${product.image}`;
+        });
+        this.productImageLoaded = new Array(this.products.length).fill(false);
       });
-      this.productImageLoaded = new Array(this.products.length).fill(false);
-    });
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.loadProducts(event.pageIndex, event.pageSize);
   }
 
   goToProductDetail(product: any) {
