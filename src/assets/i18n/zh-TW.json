@@ -43,5 +43,11 @@
   "PAYMENT_OR_ACCOUNT_ISSUES": "付款或帳務問題",
   "PROMOTIONS_AND_CAMPAIGNS": "優惠與促銷活動",
   "E_TICKETS_AND_PAYMENTS": "電子票券與繳費",
-  "LOGOUT": "登出"
+  "LOGOUT": "登出",
+  "PAGINATOR.ITEMS_PER_PAGE": "每頁項目數",
+  "PAGINATOR.NEXT_PAGE": "下一頁",
+  "PAGINATOR.PREVIOUS_PAGE": "上一頁",
+  "PAGINATOR.FIRST_PAGE": "第一頁",
+  "PAGINATOR.LAST_PAGE": "最後一頁",
+  "PAGINATOR.OF_LABEL": "的"
 }
