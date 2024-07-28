@@ -43,5 +43,11 @@
   "PAYMENT_OR_ACCOUNT_ISSUES": "Payment or Account Issues",
   "PROMOTIONS_AND_CAMPAIGNS": "Promotions and Campaigns",
   "E_TICKETS_AND_PAYMENTS": "E-tickets and Payments",
-  "LOGOUT": "Logout"
+  "LOGOUT": "Logout",
+  "PAGINATOR.ITEMS_PER_PAGE": "Items per page",
+  "PAGINATOR.NEXT_PAGE": "Next page",
+  "PAGINATOR.PREVIOUS_PAGE": "Previous page",
+  "PAGINATOR.FIRST_PAGE": "First page",
+  "PAGINATOR.LAST_PAGE": "Last page",
+  "PAGINATOR.OF_LABEL": "of"
 }

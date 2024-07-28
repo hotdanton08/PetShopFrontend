@@ -83,5 +83,15 @@
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
+
+    <!-- 分頁器 -->
+    <mat-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePageEvent($event)"
+      showFirstLastButtons
+    >
+    </mat-paginator>
   </div>
 </div>
