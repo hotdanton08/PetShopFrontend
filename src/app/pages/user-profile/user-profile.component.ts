@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,27 +12,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UserProfileComponent implements OnInit {
   userProfileForm: FormGroup;
   changePasswordForm: FormGroup;
-  email = 'user@example.com';
   genders = ['男', '女', '其他'];
-  days: number[] = [];
-  months: number[] = [];
-  years: number[] = [];
   showProfile = true; // 用於控制顯示的表單
   selected = 'profile';
+  userId: string | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private authService: AuthService
+  ) {
     this.userProfileForm = this.fb.group({
       email: [
-        { value: this.email, disabled: true },
+        { value: '', disabled: true },
         [Validators.required, Validators.email],
       ],
-      name: [''],
+      userName: [''],
       gender: [''],
-      day: [''],
-      month: [''],
-      year: [''],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
+      birthday: [''],
     });
 
     this.changePasswordForm = this.fb.group({
@@ -37,22 +37,34 @@ export class UserProfileComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
     });
 
-    // 初始化日期選項
-    this.days = Array.from({ length: 31 }, (_, i) => i + 1);
-    this.months = Array.from({ length: 12 }, (_, i) => i + 1);
-    const currentYear = new Date().getFullYear();
-    this.years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+    this.userId = this.authService.getUserId();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadUserProfile();
+  }
+
+  loadUserProfile() {
+    if (this.userId) {
+      this.userService.getUserProfile(this.userId).subscribe((data) => {
+        console.log('userData => ', data);
+        this.userProfileForm.patchValue({
+          email: data.email,
+          userName: data.username,
+          gender: data.gender,
+          birthday: data.birthday,
+        });
+      });
+    }
+  }
 
   onSubmit() {
     if (this.userProfileForm.valid) {
-      const { email, name, gender, day, month, year, password } =
+      const { email, userName, gender, day, month, year, password } =
         this.userProfileForm.value;
       // 假設我們會使用這些數據進行API調用
       console.log(
-        `Email: ${email}, Name: ${name}, Gender: ${gender}, Birthday: ${year}-${month}-${day}, Password: ${password}`,
+        `Email: ${email}, UserName: ${userName}, Gender: ${gender}, Birthday: ${year}-${month}-${day}, Password: ${password}`
       );
     }
   }
@@ -62,7 +74,7 @@ export class UserProfileComponent implements OnInit {
       const { password, confirmPassword } = this.changePasswordForm.value;
       // 假設我們會使用這些數據進行API調用
       console.log(
-        `Password: ${password}, Confirm Password: ${confirmPassword}`,
+        `Password: ${password}, Confirm Password: ${confirmPassword}`
       );
     }
   }

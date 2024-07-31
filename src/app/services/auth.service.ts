@@ -67,4 +67,13 @@ export class AuthService {
   getUser(): Observable<any> {
     return this.authStore.select('user');
   }
+
+  getUserId(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.id || null;
+    }
+    return null;
+  }
 }
