@@ -22,6 +22,14 @@
 
 .user-profile-card button {
   margin: 5px;
+  background-color: #197373;
+  color: white !important;
+
+  /* 禁用狀態下的樣式 */
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+  }
 }
 
 .sidenav-container {
