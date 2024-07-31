@@ -47,7 +47,6 @@ export class UserProfileComponent implements OnInit {
   loadUserProfile() {
     if (this.userId) {
       this.userService.getUserProfile(this.userId).subscribe((data) => {
-        console.log('userData => ', data);
         this.userProfileForm.patchValue({
           email: data.email,
           userName: data.username,
@@ -59,13 +58,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.userProfileForm.valid) {
-      const { email, userName, gender, day, month, year, password } =
-        this.userProfileForm.value;
-      // 假設我們會使用這些數據進行API調用
-      console.log(
-        `Email: ${email}, UserName: ${userName}, Gender: ${gender}, Birthday: ${year}-${month}-${day}, Password: ${password}`
-      );
+    if (this.userProfileForm.valid && this.userId) {
+      const updatedUserData = this.userProfileForm.getRawValue();
+      this.userService
+        .updateUserProfile(this.userId, updatedUserData)
+        .subscribe();
     }
   }
 

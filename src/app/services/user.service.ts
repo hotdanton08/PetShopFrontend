@@ -25,4 +25,11 @@ export class UserService {
       headers: this.getHeaders(),
     });
   }
+
+  updateUserProfile(userId: string, data: any): Observable<any> {
+    console.log(data);
+    return this.http.put<any>(`${this.backendUrl}/${userId}`, data, {
+      headers: this.getHeaders(),
+    });
+  }
 }
