@@ -35,6 +35,8 @@
   "PASSWORD_MISMATCH": "Password mismatch",
   "ENTER_PASSWORD": "Please enter password",
   "ENTER_CONFIRM_PASSWORD": "Please enter confirm password",
+  "NEW_PASSWORD": "New Password",
+  "CONFIRM_NEW_PASSWORD": "Confirm New Password",
   "ALL_QUESTIONS": "All Questions",
   "BEGINNERS": "Beginners",
   "ORDERS_AND_LOGISTICS": "Orders and Logistics",

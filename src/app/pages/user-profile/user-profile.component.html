@@ -79,13 +79,23 @@
             (ngSubmit)="onChangePasswordSubmit()"
           >
             <mat-form-field appearance="fill">
-              <mat-label>{{ "PASSWORD" | translate }}</mat-label>
+              <mat-label>{{ "NEW_PASSWORD" | translate }}</mat-label>
               <input
                 matInput
-                type="password"
+                [type]="hide ? 'password' : 'text'"
                 formControlName="password"
                 required
               />
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="hide = !hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
               <mat-error
                 *ngIf="changePasswordForm.get('password')?.hasError('required')"
               >
@@ -93,13 +103,23 @@
               </mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>{{ "CONFIRM_PASSWORD" | translate }}</mat-label>
+              <mat-label>{{ "CONFIRM_NEW_PASSWORD" | translate }}</mat-label>
               <input
                 matInput
-                type="password"
+                [type]="hideConfirm ? 'password' : 'text'"
                 formControlName="confirmPassword"
                 required
               />
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="hideConfirm = !hideConfirm"
+              >
+                <mat-icon>{{
+                  hideConfirm ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
               <mat-error *ngIf="!changePasswordMatch">
                 {{ "PASSWORD_MISMATCH" | translate }}
               </mat-error>

@@ -32,4 +32,14 @@ export class UserService {
       headers: this.getHeaders(),
     });
   }
+
+  changeUserPassword(passwordData: any): Observable<any> {
+    return this.http.put<any>(
+      `${this.backendUrl}/changePassword`,
+      passwordData,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
 }

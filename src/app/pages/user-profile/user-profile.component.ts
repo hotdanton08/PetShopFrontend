@@ -16,6 +16,8 @@ export class UserProfileComponent implements OnInit {
   showProfile = true; // 用於控制顯示的表單
   selected = 'profile';
   userId: string | null = null;
+  hide = true;
+  hideConfirm = true;
 
   constructor(
     private fb: FormBuilder,
@@ -67,12 +69,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   onChangePasswordSubmit() {
+    console.log('onChangePasswordSubmit');
     if (this.changePasswordForm.valid) {
-      const { password, confirmPassword } = this.changePasswordForm.value;
-      // 假設我們會使用這些數據進行API調用
-      console.log(
-        `Password: ${password}, Confirm Password: ${confirmPassword}`
-      );
+      const passwordData = this.changePasswordForm.getRawValue();
+      console.log(passwordData);
+      this.userService.changeUserPassword(passwordData).subscribe((error) => {
+        console.error('Error updating password:', error);
+      });
     }
   }
 

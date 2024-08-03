@@ -35,6 +35,8 @@
   "PASSWORD_MISMATCH": "密碼不匹配",
   "ENTER_PASSWORD": "請輸入密碼",
   "ENTER_CONFIRM_PASSWORD": "請輸入確認密碼",
+  "NEW_PASSWORD": "新密碼",
+  "CONFIRM_NEW_PASSWORD": "確認新密碼",
   "ALL_QUESTIONS": "全部問題",
   "BEGINNERS": "新手上路",
   "ORDERS_AND_LOGISTICS": "訂單與物流",
