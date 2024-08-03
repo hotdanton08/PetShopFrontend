@@ -64,7 +64,6 @@
             <button
               class="submit-profile"
               mat-button
-              color="primary"
               type="submit"
               [disabled]="!userProfileForm.valid"
             >
@@ -134,8 +133,8 @@
               </mat-error>
             </mat-form-field>
             <button
-              mat-raised-button
-              color="primary"
+              class="submit-profile"
+              mat-button
               type="submit"
               [disabled]="!changePasswordForm.valid || !changePasswordMatch"
             >
