@@ -81,9 +81,11 @@
               <mat-label>{{ "NEW_PASSWORD" | translate }}</mat-label>
               <input
                 matInput
+                placeholder="輸入您的新密碼"
                 [type]="hide ? 'password' : 'text'"
                 formControlName="password"
                 required
+                minlength="8"
               />
               <button
                 mat-icon-button
@@ -96,15 +98,35 @@
                 }}</mat-icon>
               </button>
               <mat-error
-                *ngIf="changePasswordForm.get('password')?.hasError('required')"
+                *ngIf="
+                  changePasswordForm.get('password')?.hasError('required') &&
+                  changePasswordForm.get('password')?.touched
+                "
               >
                 {{ "ENTER_PASSWORD" | translate }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  changePasswordForm.get('password')?.hasError('minlength') &&
+                  changePasswordForm.get('password')?.touched
+                "
+              >
+                密碼至少需要8個字符
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  !isPasswordValid() &&
+                  changePasswordForm.get('password')?.touched
+                "
+              >
+                密碼需包含英文字母和數字
               </mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>{{ "CONFIRM_NEW_PASSWORD" | translate }}</mat-label>
               <input
                 matInput
+                placeholder="確認您的新密碼"
                 [type]="hideConfirm ? 'password' : 'text'"
                 formControlName="confirmPassword"
                 required
@@ -119,14 +141,20 @@
                   hideConfirm ? "visibility_off" : "visibility"
                 }}</mat-icon>
               </button>
-              <mat-error *ngIf="!changePasswordMatch">
+              <mat-error
+                *ngIf="
+                  !changePasswordMatch &&
+                  changePasswordForm.get('confirmPassword')?.touched
+                "
+              >
                 {{ "PASSWORD_MISMATCH" | translate }}
               </mat-error>
               <mat-error
                 *ngIf="
                   changePasswordForm
                     .get('confirmPassword')
-                    ?.hasError('required')
+                    ?.hasError('required') &&
+                  changePasswordForm.get('confirmPassword')?.touched
                 "
               >
                 {{ "ENTER_CONFIRM_PASSWORD" | translate }}

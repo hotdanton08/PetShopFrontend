@@ -12,10 +12,7 @@ export class LoginComponent {
   password!: string;
   hide = true;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-  ) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   login() {
     if (this.email && this.password) {
@@ -31,6 +28,13 @@ export class LoginComponent {
         },
       });
     }
+  }
+
+  isPasswordValid(): boolean {
+    // 簡單檢查密碼是否包含至少一個字母和一個數字
+    const hasLetter = /[a-zA-Z]/.test(this.password);
+    const hasNumber = /\d/.test(this.password);
+    return hasLetter && hasNumber;
   }
 
   openForgotPasswordDialog() {

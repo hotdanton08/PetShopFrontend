@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -35,7 +34,7 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.changePasswordForm = this.fb.group({
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
     });
 
@@ -69,24 +68,28 @@ export class UserProfileComponent implements OnInit {
   }
 
   onChangePasswordSubmit() {
-    console.log('onChangePasswordSubmit');
     if (this.changePasswordForm.valid) {
       const passwordData = this.changePasswordForm.getRawValue();
-      console.log(passwordData);
-      this.userService.changeUserPassword(passwordData).subscribe((error) => {
-        console.error('Error updating password:', error);
+      this.userService.changeUserPassword(passwordData).subscribe({
+        next: (response) => {
+          console.log('Password updated successfully');
+        },
+        error: (err) => {
+          console.error('Error updating password:', err);
+        },
       });
     }
   }
 
-  // 驗證密碼是否匹配
-  get passwordsMatch() {
-    return (
-      this.userProfileForm.get('password')?.value ===
-      this.userProfileForm.get('confirmPassword')?.value
-    );
+  // 驗證密碼是否包含至少一個字母和一個數字
+  isPasswordValid(): boolean {
+    const password = this.changePasswordForm.get('password')?.value || '';
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    return hasLetter && hasNumber;
   }
 
+  // 驗證密碼是否匹配
   get changePasswordMatch() {
     return (
       this.changePasswordForm.get('password')?.value ===

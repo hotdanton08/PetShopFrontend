@@ -43,7 +43,7 @@
             [(ngModel)]="password"
             name="password"
             required
-            pattern="^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+            minlength="8"
             #passwordInput="ngModel"
           />
           <button
@@ -59,6 +59,10 @@
             >請輸入密碼</mat-error
           >
           <mat-error
+            *ngIf="passwordInput.errors?.['minlength'] && passwordInput.touched"
+            >密碼至少需要8個字符</mat-error
+          >
+          <mat-error
             *ngIf="passwordInput.errors?.['pattern'] && passwordInput.touched"
             >密碼需包含英文字母和數字</mat-error
           >
@@ -67,7 +71,7 @@
           mat-button
           class="login-button"
           type="submit"
-          [disabled]="!loginForm.valid"
+          [disabled]="!loginForm.valid || !isPasswordValid()"
         >
           登入
         </button>
