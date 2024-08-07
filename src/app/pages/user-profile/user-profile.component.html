@@ -77,7 +77,7 @@
             [formGroup]="changePasswordForm"
             (ngSubmit)="onChangePasswordSubmit()"
           >
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="password-form-field">
               <mat-label>{{ "NEW_PASSWORD" | translate }}</mat-label>
               <input
                 matInput
@@ -122,7 +122,7 @@
                 密碼需包含英文字母和數字
               </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="password-form-field">
               <mat-label>{{ "CONFIRM_NEW_PASSWORD" | translate }}</mat-label>
               <input
                 matInput
