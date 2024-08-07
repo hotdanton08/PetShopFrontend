@@ -63,20 +63,17 @@ export class UserProfileComponent implements OnInit {
       const updatedUserData = this.userProfileForm.getRawValue();
       this.userService
         .updateUserProfile(this.userId, updatedUserData)
-        .subscribe();
+        .subscribe(() => {
+          alert('儲存成功');
+        });
     }
   }
 
   onChangePasswordSubmit() {
     if (this.changePasswordForm.valid) {
       const passwordData = this.changePasswordForm.getRawValue();
-      this.userService.changeUserPassword(passwordData).subscribe({
-        next: (response) => {
-          console.log('Password updated successfully');
-        },
-        error: (err) => {
-          console.error('Error updating password:', err);
-        },
+      this.userService.changeUserPassword(passwordData).subscribe(() => {
+        alert('密碼更新成功');
       });
     }
   }
