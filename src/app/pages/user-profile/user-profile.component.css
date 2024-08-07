@@ -53,3 +53,9 @@
 .selected mat-icon {
   color: #00a4a6;
 }
+
+mat-radio-button {
+  margin-right: 20px;
+  --mdc-radio-selected-icon-color: green;
+  --mat-radio-checked-ripple-color: purple;
+}
