@@ -51,5 +51,12 @@
   "PAGINATOR.PREVIOUS_PAGE": "上一頁",
   "PAGINATOR.FIRST_PAGE": "第一頁",
   "PAGINATOR.LAST_PAGE": "最後一頁",
-  "PAGINATOR.OF_LABEL": "的"
+  "PAGINATOR.OF_LABEL": "的",
+  "LOGIN_TITLE": "登入",
+  "EMAIL": "電子郵件",
+  "ENTER_EMAIL": "請輸入您的電子郵件",
+  "INVALID_EMAIL": "Email格式錯誤",
+  "LOGIN_BUTTON": "登入",
+  "FORGOT_PASSWORD": "忘記密碼",
+  "REGISTER_BUTTON": "註冊"
 }

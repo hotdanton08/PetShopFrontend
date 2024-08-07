@@ -51,5 +51,12 @@
   "PAGINATOR.PREVIOUS_PAGE": "Previous page",
   "PAGINATOR.FIRST_PAGE": "First page",
   "PAGINATOR.LAST_PAGE": "Last page",
-  "PAGINATOR.OF_LABEL": "of"
+  "PAGINATOR.OF_LABEL": "of",
+  "LOGIN_TITLE": "Login",
+  "EMAIL": "Email",
+  "ENTER_EMAIL": "Please enter your email",
+  "INVALID_EMAIL": "Invalid email format",
+  "LOGIN_BUTTON": "Login",
+  "FORGOT_PASSWORD": "Forgot Password",
+  "REGISTER_BUTTON": "Register"
 }

@@ -15,10 +15,10 @@
         class="login-form"
       >
         <mat-form-field appearance="fill">
-          <mat-label>電子郵件</mat-label>
+          <mat-label>{{ "EMAIL" | translate }}</mat-label>
           <input
             matInput
-            placeholder="輸入您的電子郵件"
+            placeholder="{{ 'ENTER_EMAIL' | translate }}"
             type="email"
             [(ngModel)]="email"
             name="email"
@@ -28,17 +28,18 @@
           />
           <mat-error
             *ngIf="emailInput.errors?.['required'] && emailInput.touched"
-            >請輸入 Email</mat-error
+            >{{ "ENTER_EMAIL" | translate }}</mat-error
           >
-          <mat-error *ngIf="emailInput.errors?.['email'] && emailInput.touched"
-            >Email格式錯誤</mat-error
+          <mat-error
+            *ngIf="emailInput.errors?.['email'] && emailInput.touched"
+            >{{ "INVALID_EMAIL" | translate }}</mat-error
           >
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>密碼</mat-label>
+          <mat-label>{{ "PASSWORD" | translate }}</mat-label>
           <input
             matInput
-            placeholder="輸入您的密碼"
+            placeholder="{{ 'ENTER_PASSWORD' | translate }}"
             [type]="hide ? 'password' : 'text'"
             [(ngModel)]="password"
             name="password"
@@ -56,15 +57,15 @@
           </button>
           <mat-error
             *ngIf="passwordInput.errors?.['required'] && passwordInput.touched"
-            >請輸入密碼</mat-error
+            >{{ "ENTER_PASSWORD" | translate }}</mat-error
           >
           <mat-error
             *ngIf="passwordInput.errors?.['minlength'] && passwordInput.touched"
-            >密碼至少需要8個字符</mat-error
+            >{{ "PASSWORD_MINLENGTH" | translate }}</mat-error
           >
           <mat-error
             *ngIf="passwordInput.errors?.['pattern'] && passwordInput.touched"
-            >密碼需包含英文字母和數字</mat-error
+            >{{ "PASSWORD_PATTERN" | translate }}</mat-error
           >
         </mat-form-field>
         <button
@@ -73,7 +74,7 @@
           type="submit"
           [disabled]="!loginForm.valid || !isPasswordValid()"
         >
-          登入
+          {{ "LOGIN_BUTTON" | translate }}
         </button>
         <div
           fxLayout="row"
@@ -86,14 +87,14 @@
             class="forgot-password"
             (click)="openForgotPasswordDialog()"
           >
-            忘記密碼
+            {{ "FORGOT_PASSWORD" | translate }}
           </button>
           <button
             mat-button
             class="register-button"
             (click)="navigateToRegister()"
           >
-            註冊
+            {{ "REGISTER_BUTTON" | translate }}
           </button>
         </div>
       </form>
