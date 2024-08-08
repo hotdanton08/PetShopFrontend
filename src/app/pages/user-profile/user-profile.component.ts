@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class UserProfileComponent implements OnInit {
   userProfileForm: FormGroup;
   changePasswordForm: FormGroup;
-  genders = ['男', '女', '其他'];
+  genders = ['MALE', 'FEMALE', 'OTHER'];
   showProfile = true; // 用於控制顯示的表單
   selected = 'profile';
   userId: string | null = null;
@@ -21,7 +22,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private translate: TranslateService
   ) {
     this.userProfileForm = this.fb.group({
       email: [
@@ -98,5 +100,10 @@ export class UserProfileComponent implements OnInit {
   toggleForm(showProfile: boolean) {
     this.showProfile = showProfile;
     this.selected = showProfile ? 'profile' : 'password';
+  }
+
+  // 獲取翻譯後的性別選項
+  getTranslatedGender(gender: string) {
+    return this.translate.instant(gender);
   }
 }

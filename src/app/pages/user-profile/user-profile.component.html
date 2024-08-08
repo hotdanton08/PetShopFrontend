@@ -45,7 +45,7 @@
               <mat-radio-button
                 *ngFor="let gender of genders"
                 [value]="gender"
-                >{{ gender }}</mat-radio-button
+                >{{ getTranslatedGender(gender) }}</mat-radio-button
               >
             </mat-radio-group>
             <mat-form-field appearance="fill">
