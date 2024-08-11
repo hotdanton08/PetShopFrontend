@@ -28,6 +28,9 @@
   "CHANGE_PASSWORD": "Change Password",
   "NAME": "Name",
   "GENDER": "Gender",
+  "MALE": "Male",
+  "FEMALE": "Female",
+  "OTHER": "Other",
   "BIRTHDAY": "Birthday",
   "SAVE": "Save",
   "PASSWORD": "Password",
@@ -35,6 +38,8 @@
   "PASSWORD_MISMATCH": "Password mismatch",
   "ENTER_PASSWORD": "Please enter password",
   "ENTER_CONFIRM_PASSWORD": "Please enter confirm password",
+  "NEW_PASSWORD": "New Password",
+  "CONFIRM_NEW_PASSWORD": "Confirm New Password",
   "ALL_QUESTIONS": "All Questions",
   "BEGINNERS": "Beginners",
   "ORDERS_AND_LOGISTICS": "Orders and Logistics",
@@ -49,5 +54,12 @@
   "PAGINATOR.PREVIOUS_PAGE": "Previous page",
   "PAGINATOR.FIRST_PAGE": "First page",
   "PAGINATOR.LAST_PAGE": "Last page",
-  "PAGINATOR.OF_LABEL": "of"
+  "PAGINATOR.OF_LABEL": "of",
+  "LOGIN_TITLE": "Login",
+  "EMAIL": "Email",
+  "ENTER_EMAIL": "Please enter your email",
+  "INVALID_EMAIL": "Invalid email format",
+  "LOGIN_BUTTON": "Login",
+  "FORGOT_PASSWORD": "Forgot Password",
+  "REGISTER_BUTTON": "Register"
 }

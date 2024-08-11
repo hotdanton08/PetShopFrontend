@@ -28,6 +28,9 @@
   "CHANGE_PASSWORD": "更改密碼",
   "NAME": "姓名",
   "GENDER": "性別",
+  "MALE": "男",
+  "FEMALE": "女",
+  "OTHER": "其他",
   "BIRTHDAY": "生日",
   "SAVE": "儲存",
   "PASSWORD": "密碼",
@@ -35,6 +38,8 @@
   "PASSWORD_MISMATCH": "密碼不匹配",
   "ENTER_PASSWORD": "請輸入密碼",
   "ENTER_CONFIRM_PASSWORD": "請輸入確認密碼",
+  "NEW_PASSWORD": "新密碼",
+  "CONFIRM_NEW_PASSWORD": "確認新密碼",
   "ALL_QUESTIONS": "全部問題",
   "BEGINNERS": "新手上路",
   "ORDERS_AND_LOGISTICS": "訂單與物流",
@@ -49,5 +54,12 @@
   "PAGINATOR.PREVIOUS_PAGE": "上一頁",
   "PAGINATOR.FIRST_PAGE": "第一頁",
   "PAGINATOR.LAST_PAGE": "最後一頁",
-  "PAGINATOR.OF_LABEL": "的"
+  "PAGINATOR.OF_LABEL": "的",
+  "LOGIN_TITLE": "登入",
+  "EMAIL": "電子郵件",
+  "ENTER_EMAIL": "請輸入您的電子郵件",
+  "INVALID_EMAIL": "Email格式錯誤",
+  "LOGIN_BUTTON": "登入",
+  "FORGOT_PASSWORD": "忘記密碼",
+  "REGISTER_BUTTON": "註冊"
 }

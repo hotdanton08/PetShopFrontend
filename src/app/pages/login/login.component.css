@@ -13,8 +13,22 @@ mat-form-field {
   width: 100%;
 }
 
-.login-button,
+.login-button {
+  width: 100%;
+  background-color: #197373;
+  color: white !important;
+
+  /* 禁用狀態下的樣式 */
+  &:disabled {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+  }
+}
+
 .forgot-password,
 .register-button {
   width: 100%;
+  background-color: #203333;
+  color: white !important;
 }

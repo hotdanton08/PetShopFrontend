@@ -20,8 +20,16 @@
   margin: 5px;
 }
 
-.user-profile-card button {
+.submit-profile {
   margin: 5px;
+  background-color: #197373;
+  color: white !important;
+
+  /* 禁用狀態下的樣式 */
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+  }
 }
 
 .sidenav-container {
@@ -44,4 +52,12 @@
 
 .selected mat-icon {
   color: #00a4a6;
+}
+
+mat-radio-button {
+  margin-right: 20px;
+}
+
+.password-form-field {
+  margin-bottom: 25px !important;
 }

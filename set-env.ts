@@ -24,7 +24,7 @@ const targetPath = './src/environments/environment.ts';
 const envConfigFile = `export const environment = {
   production: ${process.env['PRODUCTION']}, // 從 .env 檔案中讀取 PRODUCTION 變數
   VERSION: '${version}', // 使用 package.json 中的 version 變數
-  apiUrl: '${process.env['BACKEND_URL']}' // 從 .env 檔案中讀取 BACKEND_URL 變數
+  backendUrl: '${process.env['BACKEND_URL']}' // 從 .env 檔案中讀取 BACKEND_URL 變數
 };
 
 `;
