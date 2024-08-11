@@ -1,7 +1,10 @@
+// src/app/components/cart/cart.component.ts
+
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service';
 
 interface CartItem {
   id: number;
@@ -25,49 +28,42 @@ export class CartComponent implements OnInit {
     'total',
     'actions',
   ];
-  dataSource = new MatTableDataSource<CartItem>();
+  cartItems: CartItem[] = [];
   selection = new SelectionModel<CartItem>(true, []);
 
-  cartItems: CartItem[] = [
-    {
-      id: 1,
-      name: '產品一',
-      price: 100,
-      quantity: 1,
-      image: 'https://picsum.photos/150/150?random=1',
-    },
-    {
-      id: 2,
-      name: '產品二',
-      price: 200,
-      quantity: 2,
-      image: 'https://picsum.photos/150/150?random=2',
-    },
-    {
-      id: 3,
-      name: '產品三',
-      price: 300,
-      quantity: 3,
-      image: 'https://picsum.photos/150/150?random=3',
-    },
-  ];
-
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.dataSource.data = this.cartItems;
+    const userId = this.authService.getUserId();
+    if (userId !== null) {
+      this.cartService
+        .getCartByUserId(parseInt(userId))
+        .subscribe((response) => {
+          this.cartItems = response.cartItems.map((item: any) => ({
+            id: item.cartId,
+            name: item.product.name,
+            price: item.product.price,
+            quantity: item.quantity,
+            image: item.product.image,
+          }));
+        });
+    }
   }
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
+    const numRows = this.cartItems.length;
     return numSelected === numRows;
   }
 
   masterToggle() {
     this.isAllSelected()
       ? this.selection.clear()
-      : this.dataSource.data.forEach((row) => this.selection.select(row));
+      : this.cartItems.forEach((row) => this.selection.select(row));
   }
 
   updateQuantity(item: CartItem, change: number) {
@@ -82,14 +78,14 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(item: CartItem) {
-    this.dataSource.data = this.dataSource.data.filter((i) => i.id !== item.id);
+    this.cartItems = this.cartItems.filter((i) => i.id !== item.id);
     this.selection.deselect(item);
     // Optionally trigger a backend delete here using DELETE /cart/{id}
   }
 
   calculateNum() {
     return this.selection.selected.reduce(
-      (acc, curr) => acc + curr.price * curr.quantity,
+      (acc, curr) => acc + curr.quantity,
       0
     );
   }
