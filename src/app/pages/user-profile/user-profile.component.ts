@@ -53,7 +53,7 @@ export class UserProfileComponent implements OnInit {
         this.userProfileForm.patchValue({
           email: data.email,
           userName: data.username,
-          gender: data.gender,
+          gender: data.gender.toUpperCase(),
           birthday: data.birthday,
         });
       });
