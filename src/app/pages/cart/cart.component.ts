@@ -81,7 +81,12 @@ export class CartComponent implements OnInit {
   removeFromCart(item: CartItem) {
     this.cartItems = this.cartItems.filter((i) => i.id !== item.id);
     this.selection.deselect(item);
-    // Optionally trigger a backend delete here using DELETE /cart/{id}
+
+    // 呼叫後端 API 刪除該購物車項目
+    this.cartService.deleteCartItem(item.id).subscribe(() => {
+      this.cartItems = this.cartItems.filter((i) => i.id !== item.id);
+      this.selection.deselect(item);
+    });
   }
 
   calculateNum() {
