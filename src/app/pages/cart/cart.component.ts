@@ -43,8 +43,9 @@ export class CartComponent implements OnInit {
       this.cartService
         .getCartByUserId(parseInt(userId))
         .subscribe((response) => {
+          console.log(response);
           this.cartItems = response.cartItems.map((item: any) => ({
-            id: item.cartId,
+            id: item.id,
             name: item.product.name,
             price: item.product.price,
             quantity: item.quantity,
