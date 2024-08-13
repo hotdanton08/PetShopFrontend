@@ -59,3 +59,14 @@ mat-divider {
 .cart-total {
   margin-top: 20px;
 }
+
+.cart-action-btn {
+  background-color: #197373;
+  color: white;
+
+  /* 禁用狀態下的樣式 */
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(15, 6, 6, 0.26);
+  }
+}
