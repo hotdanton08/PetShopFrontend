@@ -38,6 +38,10 @@
   width: 50px; /* 圖的邊框大小 */
 }
 
+.banner {
+  background-color: black;
+}
+
 .banner img {
   width: 100%; /* 使圖片寬度始終填滿容器寬度 */
   max-height: 400px; /* 設定一個最大高度以避免圖片過高 */
