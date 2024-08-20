@@ -85,9 +85,7 @@ mat-progress-spinner {
 }
 
 .mat-grid-tile {
-  transition:
-    box-shadow 0.3s ease-in-out,
-    border-color 0.3s ease;
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease;
   border: 1px solid transparent;
   cursor: pointer;
 }

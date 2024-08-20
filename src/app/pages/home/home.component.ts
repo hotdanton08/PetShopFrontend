@@ -1,10 +1,11 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { firstValueFrom, Subscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { environment } from '../../../environments/environment';
 import { PageEvent } from '@angular/material/paginator';
+import { BannerService } from '../../services/banner.service';
 
 interface Product {
   name: string;
@@ -19,27 +20,8 @@ interface Product {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  slides: any[] = [
-    {
-      id: 0,
-      src: 'https://picsum.photos/1500/400?random=1',
-      title: 'First slide',
-      subtitle: 'Description 1',
-    },
-    {
-      id: 1,
-      src: 'https://picsum.photos/1500/400?random=2',
-      title: 'Second slide',
-      subtitle: 'Description 2',
-    },
-    {
-      id: 2,
-      src: 'https://picsum.photos/1500/400?random=3',
-      title: 'Third slide',
-      subtitle: 'Description 3',
-    },
-  ];
-  bannerImageLoaded: boolean[] = new Array(this.slides.length).fill(false); // 追踪圖片是否加載的陣列
+  slides: any[] = [];
+  bannerImageLoaded: boolean[] = []; // 追踪圖片是否加載的陣列
   productImageLoaded!: boolean[];
   errorImage: string = 'https://fakeimg.pl/1500x400/';
 
@@ -52,6 +34,7 @@ export class HomeComponent implements OnInit {
   breakpointSubscription: Subscription | undefined;
   productsTest: any[] = [];
   productImageLoadedTest!: boolean[];
+  bannerLoaded: boolean = false; // banner 加載狀態
 
   // 分頁相關屬性
   length = 0; // 總記錄數
@@ -61,13 +44,33 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private breakpointObserver: BreakpointObserver,
-    private productService: ProductService
+    private productService: ProductService,
+    private bannerService: BannerService
   ) {}
 
   ngOnInit(): void {
-    this.preloadImages();
+    this.loadBanners();
     this.loadProducts();
     this.setupGridCols();
+  }
+
+  async loadBanners() {
+    try {
+      const response = await firstValueFrom(this.bannerService.getAllBanners());
+      this.slides = response.map((banner: any, index: number) => ({
+        id: index,
+        src: banner.imageUrl,
+        link: banner.linkUrl,
+        title: banner.title,
+        subtitle: banner.subtitle,
+      }));
+
+      this.bannerImageLoaded = new Array(this.slides.length).fill(false);
+      this.preloadImages();
+      this.bannerLoaded = true;
+    } catch (error) {
+      console.error('Error loading banners:', error);
+    }
   }
 
   preloadImages() {

@@ -12,7 +12,7 @@
     <div class="banner">
       <c-carousel>
         <c-carousel-indicators></c-carousel-indicators>
-        <c-carousel-inner>
+        <c-carousel-inner *ngIf="bannerLoaded">
           <c-carousel-item
             *ngFor="let slide of slides; let i = index"
             class="image-container"
@@ -29,7 +29,9 @@
               [hidden]="!bannerImageLoaded[i]"
             />
             <c-carousel-caption class="d-none d-md-block">
-              <h3>{{ slide.title }}</h3>
+              <h2>
+                <strong>{{ slide.title }}</strong>
+              </h2>
               <p>{{ slide.subtitle }}</p>
             </c-carousel-caption>
           </c-carousel-item>
