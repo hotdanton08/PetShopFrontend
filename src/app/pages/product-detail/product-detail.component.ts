@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { ProductDetailService } from '../../services/product-detail.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,32 +9,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  images: string[] = [
-    'https://picsum.photos/500/300?random=1',
-    'https://picsum.photos/500/300?random=2',
-    'https://picsum.photos/500/300?random=3',
-    'https://picsum.photos/500/300?random=4',
-    'https://picsum.photos/500/300?random=5',
-  ];
-  selectedImage: string;
-  soldCount: number = 50;
-  price: number = 1500;
-  productOptions = [
-    { name: 'Option 1', stock: 10 },
-    { name: 'Option 2', stock: 0 }, // Sold out
-    { name: 'Option 3', stock: 5 },
-  ];
+  name: string = '';
+  images: string[] = [];
+  selectedImage!: string;
+  soldCount: number = 0;
+  price: number = 0;
+  productOptions: any[] = [];
   selectedOption = this.productOptions[0];
   isLoggedIn: boolean = false; // This should be dynamically checked
-  description: string =
-    '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述';
+  description: string = '';
   quantity: number = 1;
 
-  constructor(private router: Router) {
-    this.selectedImage = this.images[0];
-  }
+  constructor(
+    private router: Router,
+    private productDetailService: ProductDetailService
+  ) {}
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+    const productId = '66cab69c397c3ca88fd008a0';
+
+    if (productId) {
+      try {
+        // 從後端 API 取得產品資料
+        const response = await firstValueFrom(
+          this.productDetailService.getProductDetailById(productId)
+        );
+
+        // 將取得的資料綁定到 productDetails 上
+        this.name = response.name;
+        this.images = response.images || [];
+        this.selectedImage = this.images[0];
+        this.soldCount = response.sold;
+        this.price = response.price;
+        this.description = response.description;
+        this.productOptions = response.options || [];
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    }
+  }
 
   selectImage(img: string) {
     this.selectedImage = img;

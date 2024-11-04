@@ -16,6 +16,8 @@ if (result.error) {
   process.exit(1);
 }
 
+// export 出去成全域變數的 env 資料結構
+
 // 設定要生成的 environment.ts 檔案的路徑
 const targetPath = './src/environments/environment.ts';
 
