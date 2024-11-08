@@ -1,3 +1,5 @@
+// src/app/pages/home/home.component.ts
+
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
@@ -119,8 +121,8 @@ export class HomeComponent implements OnInit {
   }
 
   goToProductDetail(product: any) {
-    // 假設產品詳情路由設置為 '/products/:id'
-    this.router.navigate(['/products', product.id]);
+    console.log('Navigating to product:', product.id);
+    this.router.navigate(['/product-detail', product.id]); // 正確的路徑
   }
 
   setupGridCols() {
