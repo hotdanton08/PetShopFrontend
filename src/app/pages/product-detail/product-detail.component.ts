@@ -1,5 +1,7 @@
+// src/app/pages/home/product-detail.component.ts
+
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { ProductDetailService } from '../../services/product-detail.service';
 
@@ -21,12 +23,12 @@ export class ProductDetailComponent implements OnInit {
   quantity: number = 1;
 
   constructor(
-    private router: Router,
+    private route: ActivatedRoute,
     private productDetailService: ProductDetailService
   ) {}
 
   async ngOnInit(): Promise<void> {
-    const productId = '66cab69c397c3ca88fd008a0';
+    const productId = this.route.snapshot.paramMap.get('id');
 
     if (productId) {
       try {
